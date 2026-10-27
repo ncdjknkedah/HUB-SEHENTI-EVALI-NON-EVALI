@@ -5,222 +5,341 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Hub Sehenti EVALI / Non-EVALI</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Hub Sehenti Pengurusan EVALI / Non-EVALI — rujukan notifikasi, siasatan, persampelan dan pelaporan situasi akut atau kritikal akibat produk merokok, JKN Kedah.">
+<meta name="description" content="Hub Sehenti Pengurusan EVALI / Non-EVALI: rujukan notifikasi, siasatan, persampelan dan pelaporan situasi akut atau kritikal akibat produk merokok, JKN Kedah.">
+<meta name="theme-color" content="#10304A">
 <link rel="icon" href="assets/logo-bebas-asap.png">
+<link rel="apple-touch-icon" href="assets/logo-bebas-asap.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&family=Carlito:ital,wght@0,400;0,700;1,400;1,700&display=swap">
 <style>
-/* Layout: white institutional logo band → navy title band with hazard stripe → sticky section nav → single column of sections; each Lampiran opens as its own view holding A4 paper sheets that print 1:1. */
+/* Layout: white logo strip, navy hero with hazard stripe, then a sticky left index rail (desktop) beside one reading column. Phones get a compact header, quick tiles, accordions and a bottom tab bar. Lampiran open as A4 sheets in their own view; on phones they reflow, with an A4 toggle. */
 :root{
   --bg:#F2F4F6; --surface:#FFFFFF; --ink:#13202D; --muted:#56677A; --line:#D7DEE5; --soft:#E8EDF2;
-  --navy:#10304A; --navy-ink:#F3F6F9; --teal:#0C6870; --teal-soft:#E1F0F1;
-  --amber:#F4C400; --amber-ink:#3A2F00; --red:#B3232B; --red-soft:#FBE9E9; --green:#1E6B3A; --green-soft:#E3F2E8;
+  --navy:#10304A; --navy-ink:#F3F6F9; --navy-muted:#B9C8D6; --navy-line:#2C4A63;
+  --teal:#0C6870; --teal-soft:#E1F0F1;
+  --amber:#F4C400; --amber-ink:#2E2500; --amber-soft:#FFF6CC; --amber-text:#8A6A00;
+  --red:#B3232B; --red-soft:#FBE9E9;
   --paper:#FFFFFF; --paper-ink:#111111; --paper-line:#222222; --paper-shade:#E6E6E6;
   --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --f-body:"IBM Plex Sans","Segoe UI",Roboto,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
   --f-form:"Carlito",Calibri,"Liberation Sans",Arial,sans-serif;
-  --r:10px;
+  --r:8px;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#0D141B; --surface:#152029; --ink:#E4EBF1; --muted:#9BAABA; --line:#283846; --soft:#1C2A36;
-  --navy:#0A2132; --navy-ink:#EEF3F7; --teal:#5BBFC6; --teal-soft:#16313A;
-  --amber:#F4C400; --amber-ink:#3A2F00; --red:#F07A80; --red-soft:#3A1C20; --green:#6FCB8E; --green-soft:#16301F;
+  --navy:#0A2132; --navy-ink:#EEF3F7; --navy-muted:#93A8BA; --navy-line:#24405A;
+  --teal:#5BBFC6; --teal-soft:#16313A;
+  --amber:#F4C400; --amber-ink:#2E2500; --amber-soft:#332B0A; --amber-text:#F4C400;
+  --red:#F07A80; --red-soft:#3A1C20;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0D141B; --surface:#152029; --ink:#E4EBF1; --muted:#9BAABA; --line:#283846; --soft:#1C2A36;
-  --navy:#0A2132; --navy-ink:#EEF3F7; --teal:#5BBFC6; --teal-soft:#16313A;
-  --amber:#F4C400; --amber-ink:#3A2F00; --red:#F07A80; --red-soft:#3A1C20; --green:#6FCB8E; --green-soft:#16301F;
+  --navy:#0A2132; --navy-ink:#EEF3F7; --navy-muted:#93A8BA; --navy-line:#24405A;
+  --teal:#5BBFC6; --teal-soft:#16313A;
+  --amber:#F4C400; --amber-ink:#2E2500; --amber-soft:#332B0A; --amber-text:#F4C400;
+  --red:#F07A80; --red-soft:#3A1C20;
   color-scheme:dark}
 
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16.5px/1.6 var(--f-body);-webkit-font-smoothing:antialiased}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
 img{max-width:100%}
 a{color:var(--teal);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:4px}
-h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:3px}
+h1,h2,h3,h4{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:0}
 p{margin:0}
-.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.gut{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1200px;margin:0 auto}
 .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
-
-/* ---------- HEADER ---------- */
-.brand{background:#FFFFFF;color:#13202D;border-bottom:1px solid #DCE2E8}
-.brand .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:14px;flex-wrap:wrap}
-.org{display:flex;align-items:center;gap:14px;min-width:0}
-.org img{height:58px;width:auto}
-.org-text{font-family:var(--f-display);font-weight:800;letter-spacing:.02em;line-height:1.2;font-size:15px;text-transform:uppercase}
-.org-text span{display:block;font-weight:700;font-size:13.5px;color:#3D4C5A}
-.partners{display:flex;align-items:center;gap:18px}
-.partners img{height:54px;width:auto}
-.partners .fctc{height:50px}
-.titleband{background:var(--navy);color:var(--navy-ink);position:relative}
-.titleband .wrap{padding-block:34px 30px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end}
-.eyebrow{font-family:var(--f-mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:#C9D6E2}
-.titleband h1{font-size:clamp(28px,4.4vw,46px);font-weight:800;margin-top:10px;letter-spacing:-.01em}
-.titleband h1 em{font-style:normal;color:var(--amber)}
-.titleband p.lede{margin-top:12px;max-width:62ch;color:#D2DCE6;font-size:16.5px}
-.ref-chip{font-family:var(--f-mono);font-size:12.5px;border:1px solid rgba(255,255,255,.28);padding:8px 12px;border-radius:6px;color:#E7EEF4;line-height:1.5;white-space:nowrap}
-.hazard{height:10px;background:repeating-linear-gradient(-45deg,#F4C400 0 14px,#16181A 14px 28px)}
-@media (max-width:720px){.titleband .wrap{grid-template-columns:1fr}.ref-chip{white-space:normal}.org img{height:48px}.partners img{height:44px}.partners .fctc{height:40px}}
-
-/* ---------- NAV ---------- */
-.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
-.nav .wrap::-webkit-scrollbar{display:none}
-.nav a{flex:0 0 auto;padding:13px 14px;font-weight:600;font-size:14.5px;color:var(--muted);text-decoration:none;border-bottom:3px solid transparent}
-.nav a:hover{color:var(--ink)}
-.nav a.on{color:var(--ink);border-bottom-color:var(--amber)}
-
-/* ---------- SECTIONS ---------- */
-main{padding-block:8px 56px}
-.sec{padding-block:44px 8px;scroll-margin-top:60px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:22px;flex-wrap:wrap}
-.sec-no{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
-.sec h2{font-size:clamp(24px,3vw,32px);font-weight:800}
-.sec h3{font-size:19px;font-weight:700;margin-bottom:10px}
-.prose{max-width:72ch;display:grid;gap:14px}
-.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-@media (max-width:900px){.grid3,.grid4{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:640px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0}
 .muted{color:var(--muted)}
-.small{font-size:14px}
-.tag{display:inline-block;font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--soft);color:var(--muted)}
+.small{font-size:.9rem}
+
+/* ---------- header ---------- */
+.brand{background:#FFFFFF;color:#13202D;border-bottom:1px solid #DCE2E8}
+.brand .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.org{display:flex;align-items:center;gap:12px;min-width:0}
+.org img{height:54px;width:auto;flex:none}
+.org-t{font:800 .9rem/1.2 var(--f-display);letter-spacing:.02em;text-transform:uppercase;min-width:0}
+.org-t span{display:block;font-weight:700;font-size:.82rem;color:#3D4C5A}
+.partners{display:flex;align-items:center;gap:14px;flex:none}
+.partners img{height:50px;width:auto}
+.partners .fctc{height:46px}
+
+.hero{background:var(--navy);color:var(--navy-ink)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:40px;padding-block:38px 34px;align-items:center}
+.eyebrow{font:600 .74rem/1.4 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted)}
+.hero h1{font-size:clamp(1.9rem,4.2vw,3rem);font-weight:800;margin-top:10px;letter-spacing:-.01em}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lede{margin-top:12px;max-width:58ch;color:var(--navy-muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{font:600 .76rem/1 var(--f-mono);padding:8px 10px;border:1px solid var(--navy-line);border-radius:4px}
+.quick{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:22px;max-width:620px}
+.quick a{display:flex;flex-direction:column;align-items:flex-start;gap:8px;padding:12px;border:1px solid var(--navy-line);border-radius:8px;color:var(--navy-ink);text-decoration:none;font:600 .85rem/1.2 var(--f-body);min-height:78px;transition:border-color .15s,background .15s}
+.quick a:hover{border-color:var(--amber);background:rgba(255,255,255,.04)}
+.quick svg{width:22px;height:22px;color:var(--amber);flex:none}
+.scope{background:rgba(0,0,0,.18);border:1px solid var(--navy-line);border-radius:10px;padding:20px}
+.scope h4{font:600 .72rem/1.3 var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--navy-muted)}
+.scope-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:14px}
+.scope-row b{display:block;font:800 2.6rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.scope-row span{font-size:.85rem;color:var(--navy-muted)}
+.scope-row .ne b{color:var(--amber)}
+.scope-bar{display:flex;height:8px;border-radius:4px;overflow:hidden;margin-top:14px;background:var(--navy-line)}
+.scope-bar i{display:block;background:#8FB3CF}
+.scope-bar i+i{background:var(--amber)}
+.scope p{font-size:.85rem;color:var(--navy-muted);margin-top:12px}
+.hazard{height:10px;background:repeating-linear-gradient(-45deg,#F4C400 0 14px,#16181A 14px 28px)}
+
+/* ---------- shell ---------- */
+.shell{display:grid;grid-template-columns:232px minmax(0,1fr);gap:40px;padding-block:34px 64px}
+.rail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 18px);align-self:start}
+.rail ol{list-style:none;margin:0;padding:0;display:grid;gap:2px;counter-reset:r}
+.rail a{display:flex;gap:10px;align-items:baseline;padding:8px 10px;border-radius:6px;text-decoration:none;color:var(--ink);font-weight:600;font-size:.95rem;transition:background .15s}
+.rail a::before{counter-increment:r;content:counter(r,decimal-leading-zero);font:600 .72rem var(--f-mono);color:var(--muted)}
+.rail a:hover{background:var(--surface)}
+.rail a.on{background:var(--navy);color:var(--navy-ink)}
+.rail a.on::before{color:var(--amber)}
+.rail .hot{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);font-size:.85rem}
+.rail .hot b{display:block;font:600 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.rail .hot .mono{font-size:.9rem;user-select:all;overflow-wrap:anywhere}
+
+main{min-width:0;display:grid;gap:60px}
+.sec{scroll-margin-top:18px;min-width:0}
+.sec>h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:800;padding-bottom:12px;border-bottom:2px solid var(--ink);margin-bottom:22px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.sec>h2 small{font:500 .82rem var(--f-body);color:var(--muted)}
+.sub{font-size:1.2rem;font-weight:700;margin:34px 0 14px}
+.sec>h2+.sub{margin-top:0}
+body.lv .hero{display:none}
+.prose{display:grid;gap:14px;max-width:70ch}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px;min-width:0}
+.panel>h3{font-size:1.08rem;margin:10px 0 8px}
+.tag{display:inline-block;font:600 .7rem/1 var(--f-mono);letter-spacing:.06em;text-transform:uppercase;padding:5px 8px;border-radius:4px;background:var(--soft);color:var(--muted)}
 .tag.red{background:var(--red-soft);color:var(--red)}
 .tag.teal{background:var(--teal-soft);color:var(--teal)}
-.tag.green{background:var(--green-soft);color:var(--green)}
-ul.tidy{margin:0;padding-left:20px;display:grid;gap:6px}
-.callout{border:1px solid var(--line);background:var(--soft);border-radius:var(--r);padding:16px 18px;font-size:15px}
-.callout strong{color:var(--ink)}
+.tag.amb{background:var(--amber-soft);color:var(--amber-text)}
+ul.tidy,ol.tidy{margin:0;padding-left:20px;display:grid;gap:6px}
+.callout{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:0 var(--r) var(--r) 0;padding:14px 16px;font-size:.95rem}
 
-/* stats + history */
-.stat{display:flex;flex-direction:column;gap:2px}
-.stat b{font-family:var(--f-display);font-size:46px;font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-.stat span{font-size:14px;color:var(--muted)}
-.hist{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.hist li{display:grid;grid-template-columns:120px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+/* history */
+.hist{list-style:none;margin:0;padding:0}
+.hist li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:16px;padding:13px 0;border-top:1px solid var(--line)}
 .hist li:last-child{border-bottom:1px solid var(--line)}
-.hist time{font-family:var(--f-mono);font-size:13.5px;color:var(--muted);padding-top:2px}
-@media (max-width:520px){.hist li{grid-template-columns:1fr;gap:2px}}
+.hist time{font:600 .84rem var(--f-mono);color:var(--teal);padding-top:2px}
 
-/* clock timeline */
-.clock{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
-.clock>div{padding:18px 16px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:8px;min-width:0}
+/* clock */
+.clock{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.clock>div{padding:16px;border-left:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:6px}
 .clock>div:first-child{border-left:0}
-.clock .t{font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
-.clock .t small{font-size:15px;font-weight:700;margin-left:3px}
-.clock .who{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
-.clock p{font-size:14.5px}
-.clock .ink-red .t{color:var(--red)}
-@media (max-width:900px){.clock{grid-template-columns:1fr}.clock>div{border-left:0;border-top:1px solid var(--line);display:grid;grid-template-columns:110px minmax(0,1fr);column-gap:14px}.clock>div:first-child{border-top:0}.clock .t{grid-row:span 2}}
+.clock .t{font:800 1.8rem/1 var(--f-display);font-variant-numeric:tabular-nums}
+.clock .t small{font-size:.9rem;margin-left:3px}
+.clock .r .t{color:var(--red)}
+.clock .w{font:600 .7rem var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.clock p{font-size:.9rem}
 
 /* case definitions */
-.def{display:flex;flex-direction:column;gap:12px}
-.def h3{margin:0}
-.def ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px}
-.def .and{font-family:var(--f-mono);font-size:12px;font-weight:600;color:var(--muted);letter-spacing:.08em}
-.def .crit{display:grid;gap:8px;font-size:15px}
-.def .crit>div{display:grid;grid-template-columns:24px minmax(0,1fr);gap:8px}
-.def .crit>div>b{font-family:var(--f-mono);color:var(--teal)}
+.def{display:flex;flex-direction:column;gap:10px}
+.def h3{font-size:1.08rem}
+.crit{display:grid;gap:7px;font-size:.93rem}
+.crit>div{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px}
+.crit>div>b{font-family:var(--f-mono);color:var(--teal)}
+.crit .and{font:600 .72rem var(--f-mono);color:var(--muted);letter-spacing:.08em}
 
 /* classifier */
 .clf{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:20px}
-@media (max-width:800px){.clf{grid-template-columns:1fr}}
 .steps{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.steps li{border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:var(--surface)}
+.steps li{border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;background:var(--surface)}
 .steps li.done{background:var(--soft)}
 .steps .q{font-weight:600}
-.steps .ans{font-family:var(--f-mono);font-size:13px;color:var(--muted);margin-top:4px}
-.btns{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
-.btn{font:inherit;font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:7px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;line-height:1.2}
+.steps .ans{font:500 .8rem var(--f-mono);color:var(--muted);margin-top:4px}
+.btns{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.btn{font:600 .9rem/1.2 var(--f-body);padding:10px 15px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:border-color .15s}
 .btn:hover{border-color:var(--muted)}
 .btn.pri{background:var(--navy);border-color:var(--navy);color:var(--navy-ink)}
-.btn.pri:hover{filter:brightness(1.15)}
-.btn.amber{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
-.btn svg{width:16px;height:16px;flex:0 0 auto}
-.result{border-radius:var(--r);padding:20px;border:2px solid var(--line);background:var(--surface);min-height:100%}
+.btn.amb{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.btn svg{width:16px;height:16px;flex:none}
+.result{border-radius:var(--r);padding:20px;border:2px solid var(--line);background:var(--surface)}
 .result.s{border-color:var(--amber)}
 .result.p,.result.c{border-color:var(--red)}
 .result.n{border-color:var(--teal)}
-.result.x{border-color:var(--line)}
-.result h3{font-size:22px;margin:6px 0 10px}
+.result h3{font-size:1.35rem;margin:8px 0 10px}
 
 /* tables */
-.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
-table.t{width:100%;border-collapse:collapse;font-size:15px;min-width:620px}
-table.t th,table.t td{padding:12px 14px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
-table.t thead th{border-top:0;font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;background:var(--soft)}
-table.t td:first-child{font-weight:600}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.t{width:100%;border-collapse:collapse;font-size:.94rem}
+.t th,.t td{padding:11px 13px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.t thead th{border-top:0;font:600 .72rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--soft)}
+.t td:first-child{font-weight:600}
 
-details.role{border-top:1px solid var(--line)}
-details.role:last-child{border-bottom:1px solid var(--line)}
-details.role summary{cursor:pointer;padding:16px 4px;font-family:var(--f-display);font-weight:700;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:12px}
-details.role summary::-webkit-details-marker{display:none}
-details.role summary::after{content:"+";font-family:var(--f-mono);color:var(--muted)}
-details.role[open] summary::after{content:"–"}
-details.role .body{padding:0 4px 18px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:20px;font-size:15px}
-@media (max-width:700px){details.role .body{grid-template-columns:1fr}}
+/* roles */
+.roles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.roles .who{font-size:.85rem;color:var(--muted);margin-bottom:8px}
 
-/* authority */
-.auth{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;align-items:start}
-.auth img{border:1px solid var(--line);border-radius:6px;box-shadow:0 6px 18px rgba(16,48,74,.14);width:150px}
-@media (max-width:560px){.auth{grid-template-columns:1fr}.auth img{width:120px}}
-.doc-meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;font-size:14.5px;margin:12px 0 16px}
-.doc-meta dt{color:var(--muted)}
-.doc-meta dd{margin:0;font-family:var(--f-mono);font-size:13.5px;overflow-wrap:anywhere}
-.law{display:grid;gap:0}
-.law>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+/* documents */
+.doc{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start}
+.doc img{width:108px;border:1px solid var(--line);border-radius:4px;box-shadow:0 6px 18px rgba(16,48,74,.14)}
+.doc>div{min-width:0}
+dl.meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;margin:12px 0 0;font-size:.9rem}
+dl.meta dt{color:var(--muted)}
+dl.meta dd{margin:0;font:500 .84rem var(--f-mono);overflow-wrap:anywhere;min-width:0}
+.law{display:grid}
+.law>div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:13px 0;border-top:1px solid var(--line)}
 .law>div:last-child{border-bottom:1px solid var(--line)}
-.law b{font-family:var(--f-mono);font-size:14px}
-@media (max-width:560px){.law>div{grid-template-columns:1fr;gap:2px}}
-.copy{font-family:var(--f-mono);font-size:14px;user-select:all}
+.law b{font:600 .86rem var(--f-mono)}
+.copy{font-family:var(--f-mono);font-size:.92rem;user-select:all;overflow-wrap:anywhere}
 
 /* lampiran index */
-.lamp-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-@media (max-width:960px){.lamp-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){.lamp-list{grid-template-columns:1fr}}
-.lamp{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
-.lamp:hover{border-color:var(--teal);transform:translateY(-1px)}
-.lamp .n{font-family:var(--f-display);font-weight:800;font-size:26px;line-height:1;width:52px;height:52px;border-radius:8px;display:grid;place-items:center;background:var(--soft);color:var(--ink);font-variant-numeric:tabular-nums}
-.lamp .src{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.lamp .ttl{font-weight:600;line-height:1.35;margin-top:3px}
-.lamp .fmt{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
-.lamp.extra .n{background:transparent;border:1.5px dashed var(--line)}
+.lgroup{margin-top:24px}
+.lgroup:first-of-type{margin-top:6px}
+.lgroup h3{font:600 .74rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.lcard{display:grid;grid-template-columns:52px minmax(0,1fr);gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);text-decoration:none;color:var(--ink);transition:border-color .15s}
+.lcard:hover{border-color:var(--navy)}
+.lcard .no{font:800 1.15rem var(--f-display);text-align:center;padding:10px 0;border-radius:6px;background:var(--soft);color:var(--navy)}
+.lcard b{display:block;font-size:.95rem;line-height:1.3}
+.lcard small{color:var(--muted);font-size:.8rem}
 
-/* ---------- VIEWER ---------- */
-.viewer-bar{position:sticky;top:calc(env(safe-area-inset-top,0px) + 47px);z-index:40;background:var(--bg);border-bottom:1px solid var(--line)}
-.viewer-bar .wrap{display:flex;align-items:center;gap:12px;padding-block:10px;flex-wrap:wrap}
-.viewer-bar .vt{flex:1 1 240px;min-width:0}
-.viewer-bar .vt .src{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
-.viewer-bar .vt h2{font-size:18px;font-weight:700;margin-top:2px}
-.viewer-bar .acts{display:flex;gap:8px;flex-wrap:wrap}
-.vnote{margin:18px 0 0;font-size:14.5px}
-.sheets{display:grid;justify-content:center;gap:24px;padding-block:22px 10px;overflow-x:auto}
-.pager{display:flex;justify-content:space-between;gap:12px;margin-top:18px;flex-wrap:wrap}
+/* talian (phone) */
+.talian-m{display:none}
+
+/* ---------- lampiran view ---------- */
+#views{display:none}
+body.lv #home{display:none}
+body.lv #views{display:block}
 .lview{display:none}
-.lview.active{display:block}
-body.viewing #home{display:none}
+.lview.on{display:block}
+.vbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--navy);color:var(--navy-ink);border-bottom:3px solid var(--amber)}
+.vbar .wrap{display:flex;gap:12px;align-items:center;justify-content:space-between;padding-block:10px;flex-wrap:wrap}
+.vbar .vt{min-width:0;flex:1 1 260px}
+.vbar .vt small{display:block;font:600 .7rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.vbar h2{font-size:1rem;font-weight:700}
+.vbar .acts{display:flex;gap:8px;flex-wrap:wrap}
+.vbar .btn{background:transparent;color:var(--navy-ink);border-color:var(--navy-line)}
+.vbar .btn:hover{border-color:var(--navy-ink)}
+.vbar .btn.amb{background:var(--amber);color:var(--amber-ink);border-color:var(--amber)}
+.vnote{max-width:210mm;margin:20px auto 0;border-left:4px solid var(--amber);background:var(--amber-soft);padding:12px 16px;border-radius:0 6px 6px 0;font-size:.95rem}
+.sheets{display:grid;gap:24px;justify-items:center;padding-block:22px 26px;overflow-x:auto}
+.pager{max-width:210mm;margin:0 auto;display:flex;justify-content:space-between;gap:10px;padding-bottom:48px;flex-wrap:wrap}
+.btn.a4t{display:none}
 
-/* ---------- FOOTER ---------- */
-footer{background:var(--navy);color:#C9D5E0;font-size:14px}
-footer .wrap{padding-block:30px 34px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px}
-footer b{color:#FFFFFF;font-family:var(--f-display);font-size:15px;letter-spacing:.02em}
-footer .fine{grid-column:1/-1;border-top:1px solid rgba(255,255,255,.15);padding-top:16px;font-size:12.5px;color:#9FB1C2;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer a{color:#FFFFFF}
-@media (max-width:700px){footer .wrap{grid-template-columns:1fr}}
+/* ---------- tab bar (phone) ---------- */
+.tabbar{display:none}
+.acc-h .chev{display:none}
+
+/* ---------- footer ---------- */
+footer{background:var(--navy);color:var(--navy-muted);font-size:.88rem}
+footer .wrap{padding-block:28px 30px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:24px}
+footer b{color:var(--navy-ink);font-family:var(--f-display)}
+footer a{color:var(--navy-ink)}
+footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:14px;font-size:.78rem;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* ---------- tablet ---------- */
+@media (max-width:960px){
+  .hero .wrap{grid-template-columns:1fr;gap:24px}
+  .shell{grid-template-columns:minmax(0,1fr)}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);z-index:15;background:var(--bg);margin-inline:calc(-1 * max(16px,env(safe-area-inset-left,0px)));padding:8px max(16px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--line)}
+  .rail ol{display:flex;overflow-x:auto;gap:4px;scrollbar-width:none}
+  .rail ol::-webkit-scrollbar{display:none}
+  .rail a{white-space:nowrap;font-size:.88rem}
+  .rail .hot{display:none}
+  .g3,.g4{grid-template-columns:1fr 1fr}
+  .clock{grid-template-columns:1fr 1fr}
+  .clock>div{border-left:0;border-bottom:1px solid var(--line)}
+  .clock>div:nth-child(even){border-left:1px solid var(--line)}
+  .clf{grid-template-columns:1fr}
+}
+
+/* ---------- phone ---------- */
+@media (max-width:760px){
+  body{font-size:16px}
+  .brand .wrap{padding-block:8px;gap:10px}
+  .org img{height:36px}
+  .org-t{font-size:.68rem}
+  .org-t span{font-size:.62rem}
+  .partners{gap:8px}
+  .partners img{height:32px}
+  .partners .fctc{height:28px}
+  .hero .wrap{padding-block:22px 22px;gap:18px}
+  .hero h1{font-size:1.65rem;margin-top:8px}
+  .hero .lede{font-size:.95rem;margin-top:10px}
+  .eyebrow{font-size:.64rem}
+  .chips{display:none}
+  .quick{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:18px;max-width:none}
+  .quick a{flex-direction:row;align-items:center;min-height:52px;padding:10px 12px;background:rgba(255,255,255,.04)}
+  .scope{padding:14px}
+  .scope-row b{font-size:2rem}
+  .rail{display:none!important}
+  .shell{padding-block:18px 110px;gap:0}
+  main{gap:40px}
+  .sec{scroll-margin-top:12px}
+  .sec>h2{font-size:1.45rem;margin-bottom:14px;padding-bottom:10px}
+  .sec>h2 small{display:block;width:100%}
+  .g2,.g3,.g4,.roles{grid-template-columns:1fr}
+  .clock{grid-template-columns:1fr}
+  .clock>div{display:grid;grid-template-columns:96px minmax(0,1fr);column-gap:12px;border-left:0!important}
+  .clock>div .t{grid-row:span 2}
+  .hist li,.law>div{grid-template-columns:1fr;gap:2px}
+  .panel{padding:16px}
+  .doc{grid-template-columns:1fr}
+  .doc img{width:96px}
+  /* talian card */
+  .talian-m{display:block;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 14px 6px;scroll-margin-top:12px}
+  .talian-m h2{font:600 .72rem var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .tl{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+  .tl b{display:block;font-size:.92rem}
+  .tl small{display:block;font-size:.78rem;color:var(--muted)}
+  .tl .mono{font-weight:600;font-size:.92rem;text-align:right;user-select:all;overflow-wrap:anywhere}
+  /* accordions */
+  .acc-h{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;margin:0!important;padding:14px 2px;border-top:1px solid var(--line);font-size:1.05rem!important;-webkit-tap-highlight-color:transparent}
+  .acc-h .chev{display:block;flex:none;width:22px;height:22px;transition:transform .2s;color:var(--muted)}
+  .acc-h[aria-expanded="true"] .chev{transform:rotate(180deg);color:var(--amber-text)}
+  .acc-b{display:none;padding:2px 0 18px}
+  .acc-h[aria-expanded="true"]+.acc-b{display:block}
+  /* stacked tables */
+  .tw.stk{border:0;background:none;overflow:visible}
+  table.t.stk,table.t.stk tbody{display:block}
+  table.t.stk thead{display:none}
+  table.t.stk tr{display:block;background:var(--surface);border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+  table.t.stk td{display:block;border:0;border-top:1px solid var(--line);padding:9px 12px}
+  table.t.stk td:first-child{border-top:0;background:var(--soft)}
+  table.t.stk td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font:600 .66rem var(--f-mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .btns .btn{flex:1 1 auto;justify-content:center;min-height:46px}
+  .lgrid{grid-template-columns:1fr}
+  .lcard{grid-template-columns:48px minmax(0,1fr);padding:10px}
+  /* tab bar */
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;left:0;right:0;bottom:0;z-index:40;background:var(--surface);border-top:1px solid var(--line);padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px));box-shadow:0 -4px 16px rgba(16,32,46,.08)}
+  .tabbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border-radius:8px;color:var(--muted);text-decoration:none;font:600 .68rem/1 var(--f-body);-webkit-tap-highlight-color:transparent}
+  .tabbar svg{width:22px;height:22px}
+  .tabbar a.on{color:var(--ink);background:var(--amber-soft)}
+  .tabbar a.on svg{color:var(--amber-text)}
+  footer{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  footer .wrap{grid-template-columns:1fr}
+  /* lampiran viewer */
+  body.lv header,body.lv footer{display:none}
+  .vbar .wrap{gap:8px;padding-block:8px}
+  .vbar .wrap>a.btn:first-child{padding:9px 10px}
+  .vbar .vt{flex:1 1 0}
+  .vbar h2{font-size:.9rem;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .vbar .acts{width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .vbar .acts::-webkit-scrollbar{display:none}
+  .vbar .acts .btn{flex:1 0 auto;justify-content:center;padding:9px 12px;font-size:.85rem}
+  .btn.a4t{display:inline-flex}
+  .vnote{margin-top:12px;font-size:.88rem}
+  .sheets{padding-block:12px 16px}
+  .pager{padding-bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+  .pager .btn{flex:1 1 40%;justify-content:center}
+}
 
 /* =========================================================
    A4 PAPER SHEETS  (always paper-white; print 1:1)
    ========================================================= */
 .sheet{width:210mm;min-height:297mm;background:var(--paper);color:var(--paper-ink);padding:13mm 15mm 12mm;font-family:var(--f-form);font-size:11.3pt;line-height:1.38;box-shadow:0 2px 14px rgba(0,0,0,.18);position:relative;display:flex;flex-direction:column}
 .sheet *{color:inherit}
-.sheet .lnum{text-align:right;font-family:Arial,"Liberation Sans",sans-serif;font-weight:700;font-size:13pt}
 .sheet .hd{text-align:right;font-family:Arial,"Liberation Sans",sans-serif;font-size:8pt;line-height:1.3}
 .sheet .ftitle{text-align:center;font-weight:700;font-size:11.5pt;margin:8px 0 10px}
 .sheet .bigtitle{text-align:center;font-family:Arial,"Liberation Sans",sans-serif;font-weight:700;font-size:14pt;line-height:1.3;margin:6px 0 12px}
@@ -235,8 +354,7 @@ footer a{color:#FFFFFF}
 .sheet .cb>*{text-indent:0}
 .sheet .cb::before{content:"[     ]";white-space:pre;font-size:10.5pt;display:inline-block;width:9mm;text-indent:0}
 .sheet .cb.in{margin-left:9mm}
-.sheet .row-cb{display:flex;gap:6mm;flex-wrap:wrap}
-.sheet .ul{display:inline-block;border-bottom:1px solid var(--paper-line);min-width:30mm;height:1em;vertical-align:baseline}
+.sheet .ul{display:inline-block;border-bottom:1px solid var(--paper-line);min-width:30mm;height:1em;vertical-align:baseline;max-width:100%}
 .sheet .ul.l{min-width:62mm}
 .sheet .line{border-bottom:1px solid var(--paper-line);height:5.6mm}
 .sheet .box{border:1.4px solid var(--paper-line);min-height:30mm;margin:4px 0 10px}
@@ -245,25 +363,25 @@ footer a{color:#FFFFFF}
 .sheet .alertbox{border:1.4px solid var(--paper-line);text-align:center;font-weight:700;padding:6px 10px;margin-top:auto}
 .sheet i,.sheet em{font-style:italic}
 .sheet p+p{margin-top:8px}
-.sheet .pg{position:absolute;bottom:4mm;left:0;right:0;text-align:center;font-family:Arial,sans-serif;font-size:8pt;color:#555}
 .sheet .src-foot{margin-top:auto;font-family:Arial,sans-serif;font-size:8.5pt;color:#444;padding-top:6mm}
 .sheet table.ft{width:100%;border-collapse:collapse;font-size:10.5pt}
 .sheet table.ft th,.sheet table.ft td{border:1px solid var(--paper-line);padding:5px 7px;vertical-align:top;text-align:left}
 .sheet table.ft th{background:var(--paper-shade)}
-.sheet .serif{font-family:"Times New Roman",Cambria,Georgia,serif}
+.sheet.serif,.sheet .serif{font-family:"Times New Roman","Liberation Serif",Cambria,Georgia,serif}
 .sheet .crest{display:block;margin:0 auto 4px;height:22mm;width:auto}
-.sheet .dots{display:inline-block;border-bottom:1.3px dotted var(--paper-line);min-width:40mm;height:1em}
+.sheet .dots{display:inline-block;border-bottom:1.3px dotted var(--paper-line);min-width:40mm;height:1em;max-width:100%}
 .sheet .dots.l{min-width:80mm}
 .sheet .dots.s{min-width:22mm}
-.sheet a.goto{color:#0C5E66;font-weight:700;text-decoration:none;border-bottom:1px dashed #0C5E66}
+.sheet .two{display:grid;grid-template-columns:1fr 1fr}
 
-/* flowchart (Lampiran 3) */
+/* flowchart: notifikasi */
 .fc3{width:100%;border-collapse:collapse;font-family:Arial,"Liberation Sans",sans-serif;font-size:9pt;line-height:1.3}
 .fc3 th,.fc3 td{border:1px solid var(--paper-line);padding:6px 7px;vertical-align:middle}
 .fc3 th{font-weight:700;text-align:center}
 .fc3 td.who{text-align:center;width:30mm}
 .fc3 td.proc{width:48mm;text-align:center;position:relative;padding:0}
 .fc3 td.act{text-align:justify}
+.fc3 td.ctr{text-align:center}
 .fc3 .node{display:inline-block;width:20mm;height:8mm;border:1.3px solid var(--paper-line);background:#fff;position:relative;z-index:1;margin:6px 0}
 .fc3 .node.end{width:7mm;height:7mm;border-radius:50%}
 .fc3 .node.dia{width:9mm;height:9mm;transform:rotate(45deg);margin:10px 0}
@@ -275,422 +393,436 @@ footer a{color:#FFFFFF}
 .fc3 ol,.fc3 ul{margin:0;padding-left:15px}
 .fc3 .n{display:grid;grid-template-columns:6mm minmax(0,1fr)}
 .fc3 .gotos{display:flex;gap:4px;flex-wrap:wrap;margin-top:4px}
-.fc3 a.goto{font-size:8pt;font-family:Arial,sans-serif;border:1px solid #0C5E66;border-radius:3px;padding:0 4px;color:#0C5E66;text-decoration:none;border-bottom:1px solid #0C5E66}
+.fc3 a.goto{font-size:8pt;font-weight:700;font-family:Arial,sans-serif;border:1px solid #0C5E66;border-radius:3px;padding:0 4px;color:#0C5E66;background:#E9F5F4;text-decoration:none}
+.fc3 a.goto:hover{background:#0C5E66;color:#fff}
 
-/* flowchart (sampel) */
-.fc6{display:flex;flex-direction:column;align-items:center;font-family:Arial,"Liberation Sans",sans-serif;font-size:9pt;line-height:1.25;gap:0;margin-top:2mm}
-.fc6 .st{border:1.3px solid var(--paper-line);padding:3px 10px;min-width:88mm;max-width:112mm;text-align:center;background:#fff;border-radius:3px}
+/* flowchart: persampelan */
+.fc6{display:flex;flex-direction:column;align-items:center;font-family:Arial,"Liberation Sans",sans-serif;font-size:9.4pt;line-height:1.25;margin-top:3mm}
+.fc6 .st{border:1.3px solid var(--paper-line);padding:4px 10px;min-width:88mm;max-width:112mm;text-align:center;background:#fff;border-radius:3px}
 .fc6 .st.term{border-radius:999px;min-width:28mm;font-weight:700}
-.fc6 .st.link{border-color:#0C5E66;border-width:2px;font-weight:700}
-.fc6 .st.link a{color:#0C5E66;text-decoration:none}
-.fc6 .st.link small{display:block;font-weight:400;font-size:8pt;color:#0C5E66}
-.fc6 .ar{width:0;height:3.4mm;border-left:1.3px solid var(--paper-line);position:relative}
+.fc6 .st.link{border-color:#0C5E66;border-width:2px;font-weight:700;background:#E9F5F4}
+.fc6 .st.link a{color:#0C5E66;text-decoration:none;display:block}
+.fc6 .st.link small{display:block;font-weight:400;font-size:8pt}
+.fc6 .ar{width:0;height:4mm;border-left:1.3px solid var(--paper-line);position:relative}
 .fc6 .ar::after{content:"";position:absolute;bottom:-1px;left:-4.5px;border:4px solid transparent;border-top:6px solid var(--paper-line);border-bottom:0}
-.fc6 .dia{width:8mm;height:8mm;border:1.3px solid var(--paper-line);transform:rotate(45deg);margin:1.6mm 0;background:#fff}
-.fc6 .split{display:grid;grid-template-columns:1fr 1fr;gap:12mm;width:150mm;position:relative;padding-top:4mm}
+.fc6 .dia{width:8mm;height:8mm;border:1.3px solid var(--paper-line);transform:rotate(45deg);margin:1.8mm 0;background:#fff}
+.fc6 .split{display:grid;grid-template-columns:1fr 1fr;gap:12mm;width:150mm;max-width:100%;position:relative;padding-top:4mm}
 .fc6 .split::before{content:"";position:absolute;top:0;left:25%;right:25%;border-top:1.3px solid var(--paper-line)}
 .fc6 .split>div{display:flex;flex-direction:column;align-items:center;position:relative}
 .fc6 .split>div::before{content:"";position:absolute;top:-4mm;height:4mm;left:50%;border-left:1.3px solid var(--paper-line)}
 .fc6 .split .st{min-width:0;width:100%}
-.fc6 .join{width:81mm;height:4mm;border:1.3px solid var(--paper-line);border-top:0}
+.fc6 .join{width:81mm;max-width:50%;height:4mm;border:1.3px solid var(--paper-line);border-top:0}
+
+/* ---------- phones: reflow sheets (default) or fit A4 to width ---------- */
+@media screen and (max-width:760px){
+  body.a4 .sheets{justify-items:center;overflow-x:auto}
+  body.a4 .sheet{zoom:var(--z,.45)}
+  body:not(.a4) .sheet{width:100%;min-height:0;padding:7mm 5mm;font-size:10.4pt;overflow-x:auto;box-shadow:0 1px 6px rgba(0,0,0,.15)}
+  body:not(.a4) .sheet .cols{grid-template-columns:1fr;gap:0}
+  body:not(.a4) .sheet .cols>div+div{margin-top:3mm}
+  body:not(.a4) .sheet .f,body:not(.a4) .sheet .f.w,body:not(.a4) .sheet .f.n{grid-template-columns:38% 3mm minmax(0,1fr)}
+  body:not(.a4) .sheet .two{grid-template-columns:1fr!important;gap:3mm!important}
+  body:not(.a4) .sheet .push{margin-left:0!important}
+  body:not(.a4) .sheet .ul,body:not(.a4) .sheet .dots{min-width:24mm!important}
+  body:not(.a4) .sheet .ul.l,body:not(.a4) .sheet .dots.l{min-width:45mm!important}
+  body:not(.a4) .sheet .bigtitle{font-size:12pt}
+  body:not(.a4) .sheet .ftitle{font-size:10.5pt}
+  body:not(.a4) .sheet table.ft{font-size:9.6pt}
+  body:not(.a4) .sheet .wide{width:100%!important}
+  /* flowchart as step cards */
+  body:not(.a4) .sheet table.fc3,body:not(.a4) .sheet table.fc3 tbody{display:block}
+  body:not(.a4) .sheet table.fc3 thead{display:none}
+  body:not(.a4) .sheet table.fc3 tr{display:block;border:1.2px solid #000;margin-top:5mm;position:relative}
+  body:not(.a4) .sheet table.fc3 tbody tr:first-child{margin-top:2mm}
+  body:not(.a4) .sheet table.fc3 tbody tr:not(:first-child)::before{content:"";position:absolute;left:50%;top:-5mm;height:5mm;border-left:1.2px solid #000}
+  body:not(.a4) .sheet table.fc3 td{display:block;border:0;width:auto!important;text-align:left}
+  body:not(.a4) .sheet table.fc3 td.proc{display:none}
+  body:not(.a4) .sheet table.fc3 td.who{font-weight:700;font-size:8.6pt;background:#EEF2F4;border-bottom:1px solid #000;padding:1.6mm 2.4mm}
+  body:not(.a4) .sheet table.fc3 td.who:empty{display:none}
+  body:not(.a4) .sheet table.fc3 tr.first,body:not(.a4) .sheet table.fc3 tr.last{width:30mm;margin-left:auto;margin-right:auto;border-radius:20mm}
+  body:not(.a4) .sheet table.fc3 tr.first td,body:not(.a4) .sheet table.fc3 tr.last td{text-align:center;font-weight:700;padding:1.2mm}
+  body:not(.a4) .sheet table.fc3 td.act{text-align:left}
+  body:not(.a4) .sheet .fc6 .st{min-width:0;width:100%;max-width:none}
+  body:not(.a4) .sheet .fc6 .split{width:100%;gap:4mm}
+}
 
 /* ---------- PRINT ---------- */
 @page{size:A4;margin:0}
 @media print{
-  body{background:#fff}
-  body::before,.nav,.viewer-bar,.vnote,.pager,footer,.clf .btns{display:none!important}
-  body.viewing .brand,body.viewing .titleband,body.viewing .hazard,body.viewing #home{display:none!important}
-  body:not(.viewing) .sec{break-inside:auto;padding-left:10mm;padding-right:10mm}
-  body:not(.viewing) .panel,body:not(.viewing) .clock>div{break-inside:avoid}
-  main{padding:0}
-  .lview{display:none!important}
-  .lview.active{display:block!important}
-  .lview .wrap{padding:0;max-width:none}
-  .sheets{display:block;padding:0;gap:0;overflow:visible}
-  .sheet{box-shadow:none;margin:0;break-after:page;page-break-after:always;width:210mm;height:297mm;min-height:0;overflow:hidden}
+  html,body{background:#fff!important}
+  :root{padding:0!important}
+  body::before,.rail,.tabbar,.quick,.talian-m,.vbar,.vnote,.pager,footer,.clf .btns,.btn{display:none!important}
+  body.lv header,body.lv #home{display:none!important}
+  .lview:not(.on){display:none!important}
+  .sheets{display:block;padding:0!important;gap:0;overflow:visible}
+  .sheet{box-shadow:none;margin:0;break-after:page;page-break-after:always;width:210mm;height:297mm;min-height:0;overflow:hidden;zoom:1!important}
   .sheet:last-child{break-after:auto;page-break-after:auto}
-  .sheet a.goto,.fc3 a.goto{color:#000;border-color:#000}
-  .fc3 .gotos{display:none}
+  .fc3 .gotos,.fc6 .ext{display:none}
+  .fc6 .st.link{border-color:#000;border-width:1.3px;background:#fff}
+  .fc6 .st.link a{color:#000}
+  .fc6 .st.link small{display:none}
+  .fc6 .st.link{font-weight:400}
+  body:not(.lv) .shell{display:block;padding:0 10mm}
+  body:not(.lv) .panel,body:not(.lv) .clock>div{break-inside:avoid}
+  .acc-b{display:block!important}
 }
 </style>
 </head>
 <body>
-<header>
-  <div class="brand">
+<header id="top">
+  <div class="brand gut">
     <div class="wrap">
       <div class="org">
         <img src="assets/jata-negara.png" alt="Jata Negara Malaysia">
-        <div class="org-text">Kementerian Kesihatan Malaysia<span>Jabatan Kesihatan Negeri Kedah</span></div>
+        <div class="org-t">Kementerian Kesihatan Malaysia<span>Jabatan Kesihatan Negeri Kedah</span></div>
       </div>
       <div class="partners">
-        <img src="assets/logo-bebas-asap.png" alt="Logo kawalan tembakau – larangan merokok">
+        <img src="assets/logo-bebas-asap.png" alt="Logo larangan merokok">
         <img class="fctc" src="assets/logo-fctc.png" alt="WHO Framework Convention on Tobacco Control (FCTC)">
       </div>
     </div>
   </div>
-  <div class="titleband">
+  <div class="hero gut">
     <div class="wrap">
       <div>
-        <div class="eyebrow">Situasi Akut atau Kritikal Akibat Produk Merokok</div>
+        <div class="eyebrow">Situasi akut atau kritikal akibat produk merokok · GP Edisi 2026</div>
         <h1>Hub Sehenti Pengurusan <em>EVALI</em> / <em>Non-EVALI</em></h1>
         <p class="lede">Rujukan pantas notifikasi, siasatan, persampelan dan pelaporan untuk hospital, klinik kesihatan, Pejabat Kesihatan Daerah dan Jabatan Kesihatan Negeri Kedah.</p>
+        <div class="chips"><span class="chip">SPKPK Bil. 25/2026</span><span class="chip">MOH/K/EPI/91.26(GU)</span><span class="chip">Akta 852</span></div>
+        <nav class="quick" aria-label="Pintasan">
+          <a href="#klasifikasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><span>Klasifikasi kes</span></a>
+          <a href="#lampiran-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg><span>Borang notifikasi</span></a>
+          <a href="#lampiran-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="8" y="2" width="8" height="5" rx="1"/><rect x="8" y="17" width="8" height="5" rx="1"/><path d="M12 7v10M12 12h7v5"/><rect x="16" y="17" width="6" height="5" rx="1"/></svg><span>Carta alir notifikasi</span></a>
+          <a href="#lampiran-6"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 15h9"/></svg><span>Persampelan produk</span></a>
+        </nav>
       </div>
-      <div class="ref-chip">SPKPK Bil. 25/2026<br>GP Notifikasi Edisi 2026<br>Akta 852</div>
+      <div class="scope" aria-label="Kes direkodkan 2019 hingga 2025">
+        <h4>Kes direkodkan di Malaysia, 2019–2025</h4>
+        <div class="scope-row">
+          <div><b>48</b><span>kes EVALI</span></div>
+          <div class="ne"><b>63</b><span>kes Non-EVALI</span></div>
+        </div>
+        <div class="scope-bar" aria-hidden="true"><i style="width:43.2%"></i><i style="width:56.8%"></i></div>
+        <p>Kes Non-EVALI melebihi EVALI. Vape menjejaskan sistem kardiovaskular, pencernaan dan saraf, bukan paru-paru sahaja. Edisi 2026 meliputi kedua-duanya.</p>
+      </div>
     </div>
   </div>
   <div class="hazard" aria-hidden="true"></div>
 </header>
 
-<nav class="nav" aria-label="Navigasi bahagian">
-  <div class="wrap">
-    <a href="#latar" data-nav="latar">Latar Belakang</a>
-    <a href="#ringkasan" data-nav="ringkasan">Ringkasan GP</a>
-    <a href="#klasifikasi" data-nav="klasifikasi">Klasifikasi Kes</a>
-    <a href="#kuasa" data-nav="kuasa">Punca Kuasa</a>
-    <a href="#lampiran" data-nav="lampiran">Lampiran &amp; Borang</a>
-  </div>
-</nav>
+<div id="home" class="gut">
+<div class="wrap shell">
+  <nav class="rail" aria-label="Kandungan hub">
+    <ol id="railList">
+      <li><a href="#latar">Latar belakang</a></li>
+      <li><a href="#ringkasan">Ringkasan GP</a></li>
+      <li><a href="#klasifikasi">Klasifikasi kes</a></li>
+      <li><a href="#kuasa">Punca kuasa</a></li>
+      <li><a href="#lampiran">Lampiran &amp; borang</a></li>
+    </ol>
+    <div class="hot">
+      <b>Pertanyaan teknikal</b>
+      Bahagian Kawalan Penyakit, KKM<br><span class="mono">03-8892 4530</span><br><span class="mono">fctcmalaysia@moh.gov.my</span>
+    </div>
+  </nav>
 
-<main>
-<div id="home">
+  <main>
+<section class="talian-m" id="talian" aria-label="Talian penting">
+  <h2>Pertanyaan teknikal</h2>
+  <div class="tl"><div><b>Bahagian Kawalan Penyakit, KKM</b><small>Telefon</small></div><span class="mono">03-8892 4530</span></div>
+  <div class="tl"><div><b>E-mel</b><small>Sektor FCTC</small></div><span class="mono">fctcmalaysia@moh.gov.my</span></div>
+</section>
 
-<!-- ===================== LATAR BELAKANG ===================== -->
+<!-- ================= 01 LATAR ================= -->
 <section class="sec" id="latar">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-no">01</span><h2>Latar Belakang</h2></div>
-    <div class="grid2">
-      <div class="prose">
-        <p>Penggunaan produk merokok bukan sahaja menyebabkan penyakit kronik dan kematian pramatang. Ia juga boleh mencetuskan <strong>situasi akut atau kritikal</strong>, iaitu kejadian yang membahayakan nyawa, kesihatan atau keselamatan dan memerlukan rawatan perubatan segera.</p>
-        <p>Situasi yang paling kerap dilaporkan ialah <strong>EVALI</strong> (<i>E-cigarette or Vaping Product Use-Associated Lung Injury</i>), keracunan nikotin, dan komplikasi akut lain (<strong>Non-EVALI</strong>) akibat bahan kimia berbahaya atau bahan terlarang, terutamanya melalui rokok elektronik atau vape.</p>
-        <p>Penggunaan vape semakin meningkat dalam kalangan remaja dan dewasa muda, termasuk vape yang dicampur dadah sintetik. Keadaan ini boleh menyebabkan keracunan, kegagalan organ dan kematian.</p>
-        <p>Sistem notifikasi di bawah SPKPK Bil. 14/2022 hanya meliputi EVALI. Selepas Akta 852 berkuat kuasa, skop notifikasi diperluas kepada <strong>semua produk merokok</strong> dan <strong>semua komplikasi akut</strong>, termasuk yang melibatkan sistem organ selain paru-paru.</p>
-      </div>
-      <div style="display:grid;gap:20px;align-content:start">
-        <div class="panel">
-          <div class="tag">Kes direkodkan di Malaysia, 2019–2025</div>
-          <div class="grid2" style="margin-top:16px;gap:16px">
-            <div class="stat"><b>48</b><span>kes EVALI</span></div>
-            <div class="stat"><b>63</b><span>kes Non-EVALI</span></div>
-          </div>
-          <p class="small muted" style="margin-top:14px">Kes Non-EVALI melebihi EVALI. Ini menunjukkan vape menjejaskan banyak sistem organ, bukan sistem respiratori sahaja.</p>
-        </div>
-        <ol class="hist">
-          <li><time>9 Jun 2022</time><div>SPKPK Bil. 14/2022 mewajibkan notifikasi penyakit berkaitan rokok elektronik atau vape (EVALI).</div></li>
-          <li><time>1 Okt 2024</time><div>Akta Kawalan Produk Merokok Demi Kesihatan Awam 2024 [Akta 852] berkuat kuasa. Tatacara persampelan UIP-AKPMDKA-04-24 dikeluarkan.</div></li>
-          <li><time>19 Okt 2026</time><div>SPKPK Bil. 25/2026 dan GP Edisi 2026 menggantikan arahan 2022. Skop diperluas kepada situasi akut atau kritikal akibat semua produk merokok.</div></li>
-        </ol>
-      </div>
+  <h2>Latar belakang <small>Bab 1–3 GP</small></h2>
+  <div class="g2">
+    <div class="prose">
+      <p>Penggunaan produk merokok bukan sahaja menyebabkan penyakit kronik dan kematian pramatang. Ia juga boleh mencetuskan <strong>situasi akut atau kritikal</strong>, iaitu kejadian yang membahayakan nyawa, kesihatan atau keselamatan dan memerlukan rawatan perubatan segera.</p>
+      <p>Situasi yang paling kerap dilaporkan ialah <strong>EVALI</strong> (<i>E-cigarette or Vaping Product Use-Associated Lung Injury</i>), keracunan nikotin, dan komplikasi akut lain (<strong>Non-EVALI</strong>) akibat bahan kimia berbahaya atau bahan terlarang, terutamanya melalui rokok elektronik atau vape.</p>
+      <p>Penggunaan vape semakin meningkat dalam kalangan remaja dan dewasa muda, termasuk vape yang dicampur dadah sintetik. Keadaan ini boleh menyebabkan keracunan, kegagalan organ dan kematian.</p>
+      <p>Sistem notifikasi di bawah SPKPK Bil. 14/2022 hanya meliputi EVALI. Selepas Akta 852 berkuat kuasa, skop notifikasi diperluas kepada <strong>semua produk merokok</strong> dan <strong>semua komplikasi akut</strong>, termasuk yang melibatkan sistem organ selain paru-paru.</p>
     </div>
+    <ol class="hist">
+      <li><time>9 Jun 2022</time><div>SPKPK Bil. 14/2022 mewajibkan notifikasi penyakit berkaitan rokok elektronik atau vape (EVALI).</div></li>
+      <li><time>1 Okt 2024</time><div>Akta Kawalan Produk Merokok Demi Kesihatan Awam 2024 [Akta 852] berkuat kuasa. Tatacara persampelan UIP-AKPMDKA-04-24 dikeluarkan.</div></li>
+      <li><time>19 Okt 2026</time><div>SPKPK Bil. 25/2026 dan GP Edisi 2026 menggantikan arahan 2022. Skop diperluas kepada situasi akut atau kritikal akibat semua produk merokok.</div></li>
+    </ol>
+  </div>
+  <h3 class="sub">Objektif garis panduan</h3>
+  <div class="g3">
+    <div class="panel"><p>Menyediakan tatacara notifikasi, penyiasatan, pelaporan dan pemantauan situasi akut atau kritikal yang disyaki berkaitan produk merokok.</p></div>
+    <div class="panel"><p>Menyeragamkan pelaksanaan notifikasi dan pengurusan kes di semua fasiliti kesihatan.</p></div>
+    <div class="panel"><p>Menyokong pengumpulan data epidemiologi untuk penilaian risiko, tindakan kawal selia dan perlindungan kesihatan awam.</p></div>
   </div>
 </section>
 
-<!-- ===================== RINGKASAN GP ===================== -->
+<!-- ================= 02 RINGKASAN ================= -->
 <section class="sec" id="ringkasan">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-no">02</span><h2>Ringkasan Garis Panduan</h2></div>
+  <h2>Ringkasan garis panduan <small>Bab 4–14 GP</small></h2>
 
-    <h3>Garis masa notifikasi dan pelaporan</h3>
-    <p class="muted small" style="margin-bottom:14px">Semua tempoh dikira dari masa PKD menerima notifikasi daripada hospital atau klinik, kecuali notifikasi awal yang dikira dari masa diagnosis.</p>
+  <h3 class="sub">Garis masa notifikasi dan pelaporan</h3>
+  <div>
+    <p class="small muted" style="margin-bottom:12px">Tempoh dikira dari masa PKD menerima notifikasi, kecuali notifikasi awal yang dikira dari masa diagnosis.</p>
     <div class="clock">
-      <div class="ink-red"><span class="t">24<small>jam</small></span><span class="who">Hospital / Klinik → PKD</span><p>Notifikasi kes disyaki menggunakan Borang Notifikasi (<a href="#lampiran-2">Lampiran 2</a>). Jangan tunggu diagnosis akhir.</p></div>
-      <div class="ink-red"><span class="t">24<small>jam</small></span><span class="who">PKD → JKN → IPKKM</span><p>PKD mengesahkan kes disyaki. JKN menghantar borang yang disahkan ke IPKKM.</p></div>
-      <div><span class="t">48<small>jam</small></span><span class="who">PKD → JKN → IPKKM</span><p>Siasatan PKD (<a href="#lampiran-4">Lampiran 4</a>) dan laporan awal yang telah diulas JKN.</p></div>
-      <div><span class="t">7<small>hari</small></span><span class="who">PKD → JKN → IPKKM</span><p>Laporan akhir kes sporadik (<a href="#lampiran-11">Lampiran 7</a>).</p></div>
-      <div><span class="t">Kluster</span><span class="who">PKD → JKN → IPKKM</span><p>Laporan kluster (<a href="#lampiran-13">L8</a>) dan CPRC (<a href="#lampiran-12">L9</a>) selepas pengesahan. Laporan akhir selepas bilik gerakan ditutup.</p></div>
+      <div class="r"><span class="t">24<small>jam</small></span><span class="w">Hospital / KK → PKD</span><p>Notifikasi kes disyaki dengan <a href="#lampiran-2">Borang Notifikasi</a>. Jangan tunggu diagnosis akhir.</p></div>
+      <div class="r"><span class="t">24<small>jam</small></span><span class="w">PKD → JKN → IPKKM</span><p>PKD mengesahkan kes disyaki. JKN menghantar borang yang disahkan ke IPKKM.</p></div>
+      <div><span class="t">48<small>jam</small></span><span class="w">Laporan awal</span><p>Siasatan PKD (<a href="#lampiran-4">Borang Siasatan</a>) dan laporan awal yang diulas JKN.</p></div>
+      <div><span class="t">7<small>hari</small></span><span class="w">Laporan akhir</span><p>Laporan akhir kes sporadik (<a href="#lampiran-11">Borang Laporan Akhir</a>).</p></div>
+      <div><span class="t">Kluster</span><span class="w">Selepas pengesahan</span><p><a href="#lampiran-13">Laporan kluster</a> dan <a href="#lampiran-12">CPRC</a>. Laporan akhir selepas bilik gerakan ditutup.</p></div>
     </div>
+  </div>
 
-    <div class="grid2" style="margin-top:36px">
-      <div class="panel">
-        <h3>Skop: apakah produk merokok?</h3>
-        <p class="small muted" style="margin-bottom:12px">Takrif Seksyen 2, Akta 852</p>
-        <ul class="tidy small">
-          <li><strong>Produk tembakau</strong>: rokok konvensional, cerut, tembakau lerai, tembakau tanpa asap, produk tembakau yang dipanaskan.</li>
-          <li><strong>Bahan merokok</strong>: termasuk nikotin, <i>propylene glycol</i>, <i>glycerol</i> dan <i>triethylene glycol</i>. Contoh: cecair atau gel vape.</li>
-          <li><strong>Produk pengganti tembakau</strong>: produk selain tembakau yang boleh digunakan untuk merokok.</li>
-          <li><strong>Peranti rokok elektronik</strong>: sistem terbuka (tangki boleh isi semula), sistem tertutup (katrij atau pod pakai buang), dan peranti pemanasan produk tembakau.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h3>Pengguna garis panduan</h3>
-        <ul class="tidy small">
-          <li>Hospital kerajaan dan swasta</li>
-          <li>Klinik kerajaan dan swasta</li>
-          <li>Pejabat Kesihatan Daerah (Unit NCD, Survelan, UIP, Promosi Kesihatan)</li>
-          <li>Jabatan Kesihatan Negeri (Unit NCD, Survelan, UIP)</li>
-          <li>Ibu Pejabat KKM (BKP, BPKA, Makmal Kesihatan Awam)</li>
-        </ul>
-        <div class="callout" style="margin-top:16px"><strong>Notifikasi awal</strong> dibuat sebaik kes disyaki, tanpa menunggu pengesahan diagnosis akhir.</div>
+  <h3 class="sub">Definisi kes</h3>
+  <div class="g4">
+    <div class="panel def">
+      <span class="tag">Kes disyaki</span>
+      <h3>Suspected case</h3>
+      <div class="crit">
+        <div><b>A</b><span>Guna <strong>apa-apa produk merokok</strong> dalam 90 hari sebelum gejala, dan diagnosis belum disahkan melalui makmal atau radiologi</span></div>
+        <div class="and">DAN</div>
+        <div><b>B</b><span>Tiada diagnosis alternatif atau punca lain yang jelas; perlu pemerhatian rapi, penilaian lanjut dan notifikasi awal</span></div>
       </div>
     </div>
-
-    <h3 style="margin-top:40px">Definisi kes</h3>
-    <div class="grid4" style="margin-top:6px">
-      <div class="panel def">
-        <span class="tag">Kes Disyaki</span>
-        <h3>Suspected case</h3>
-        <div class="crit">
-          <div><b>A</b><span>Guna <strong>apa-apa produk merokok</strong> dalam 90 hari sebelum gejala, dan diagnosis belum disahkan melalui makmal atau radiologi</span></div>
-          <div class="and">DAN</div>
-          <div><b>B</b><span>Tiada diagnosis alternatif atau punca lain yang jelas; perlu pemerhatian rapi, penilaian lanjut dan notifikasi awal</span></div>
-        </div>
-      </div>
-      <div class="panel def">
-        <span class="tag red">EVALI</span>
-        <h3>Probable EVALI</h3>
-        <div class="crit">
-          <div><b>A</b><span>Guna vape dalam 90 hari sebelum gejala</span></div>
-          <div class="and">DAN</div>
-          <div><b>B</b><span>Infiltrat pulmonari pada X-ray atau <i>ground-glass opacities</i> pada CT dada</span></div>
-          <div class="and">DAN</div>
-          <div><b>C</b><span>Jangkitan dikesan melalui PCR atau kultur, tetapi pasukan klinikal percaya ia bukan punca utama; atau kriteria minimum jangkitan tidak dipenuhi (ujian tidak dibuat)</span></div>
-          <div class="and">DAN</div>
-          <div><b>D</b><span>Tiada diagnosis alternatif munasabah (jantung, reumatologi, kanser)</span></div>
-        </div>
-      </div>
-      <div class="panel def">
-        <span class="tag red">EVALI</span>
-        <h3>Confirmed EVALI</h3>
-        <div class="crit">
-          <div><b>A</b><span>Guna vape dalam 90 hari sebelum gejala</span></div>
-          <div class="and">DAN</div>
-          <div><b>B</b><span>Perubahan radiologi pada X-ray atau CT dada</span></div>
-          <div class="and">DAN</div>
-          <div><b>C</b><span>Tiada jangkitan pulmonari: virus respiratori negatif, PCR negatif, semua ujian jangkitan respiratori negatif (cth. <i>urine antigen</i> <i>S. pneumoniae</i> &amp; <i>Legionella</i>, kultur sputum dan darah, jangkitan oportunis HIV)</span></div>
-          <div class="and">DAN</div>
-          <div><b>D</b><span>Tiada diagnosis alternatif munasabah</span></div>
-        </div>
-      </div>
-      <div class="panel def">
-        <span class="tag teal">Non-EVALI</span>
-        <h3>Penyakit selain EVALI</h3>
-        <div class="crit">
-          <div><b>A</b><span>Guna produk merokok dalam 90 hari sebelum gejala kardiovaskular, pencernaan atau neurologi (selain respiratori)</span></div>
-          <div class="and">DAN</div>
-          <div><b>B</b><span>Tiada bukti jangkitan; semua ujian penyakit berjangkit negatif</span></div>
-          <div class="and">DAN / ATAU</div>
-          <div><b>C</b><span>Ada toksidrom klinikal: antikolinergik, simpatomimetik, kolinergik, opioid atau sedatif-hipnotik (<a href="#lampiran-1">Lampiran 1</a>)</span></div>
-        </div>
+    <div class="panel def">
+      <span class="tag red">EVALI</span>
+      <h3>Probable EVALI</h3>
+      <div class="crit">
+        <div><b>A</b><span>Guna vape dalam 90 hari sebelum gejala</span></div>
+        <div class="and">DAN</div>
+        <div><b>B</b><span>Infiltrat pulmonari pada X-ray atau <i>ground-glass opacities</i> pada CT dada</span></div>
+        <div class="and">DAN</div>
+        <div><b>C</b><span>Jangkitan dikesan melalui PCR atau kultur, tetapi pasukan klinikal percaya ia bukan punca utama; atau kriteria minimum jangkitan tidak dipenuhi (ujian tidak dibuat)</span></div>
+        <div class="and">DAN</div>
+        <div><b>D</b><span>Tiada diagnosis alternatif munasabah (jantung, reumatologi, kanser)</span></div>
       </div>
     </div>
-
-    <div class="grid3" style="margin-top:40px">
-      <div class="panel">
-        <span class="tag">Seksyen 8</span>
-        <h3 style="margin-top:10px">Siasatan PKD</h3>
-        <ul class="tidy small">
-          <li>Dalam <strong>48 jam</strong> selepas notifikasi, guna <a href="#lampiran-4">Borang Siasatan</a>.</li>
-          <li>Temu bual bersemuka dengan kes, keluarga, penjaga, rakan atau saksi: kronologi, tarikh, masa, tempat, punca, ciri produk.</li>
-          <li>Semak rekod rawatan awal di hospital atau klinik.</li>
-          <li>Ambil barang kes, label dengan identiti kes. Ambil <strong>keseluruhan baki</strong> sampel untuk analisis termasuk <i>chemical profiling</i>.</li>
-          <li>Lawat lokasi kes memperoleh produk. Ambil <strong>sampel proxy</strong> dari saluran yang sama jika barang kes tiada.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <span class="tag red">PDRM</span>
-        <h3 style="margin-top:10px">Bila libatkan polis</h3>
-        <ul class="tidy small">
-          <li><strong>Ada bukti kukuh</strong> (ujian urin positif dadah <em>dan</em> barang kes mengandungi bahan terlarang): hospital atau klinik <strong>membuat laporan polis</strong>.</li>
-          <li><strong>Tiada bukti</strong> (urin negatif, tiada barang kes, atau kedua-duanya): PKD boleh menghantar <a href="#lampiran-5">surat pemakluman</a> kepada BSJN IPD.</li>
-          <li>Tindakan PDRM di bawah Akta Dadah Berbahaya 1952 atau Akta Racun 1952.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <span class="tag">Seksyen 9</span>
-        <h3 style="margin-top:10px">Analisis sampel</h3>
-        <ul class="tidy small">
-          <li>Analisis: nikotin, <i>propylene glycol</i>, <i>glycerol</i> (kuantitatif) dan <i>chemical profiling</i>.</li>
-          <li>Barang kes dan sampel proxy dihantar ke <strong>MKAK</strong>.</li>
-          <li>Jika urin positif dadah: barang kes diambil PDRM dan dihantar ke <strong>Jabatan Kimia Malaysia</strong>.</li>
-          <li>Hantar hanya baki produk yang disyaki punca kejadian. Ikut <a href="#lampiran-6">tatacara Seksyen 28(2)</a>.</li>
-          <li>Makmal memaklumkan keputusan kepada pemohon, s.k. JKN dan IPKKM.</li>
-        </ul>
+    <div class="panel def">
+      <span class="tag red">EVALI</span>
+      <h3>Confirmed EVALI</h3>
+      <div class="crit">
+        <div><b>A</b><span>Guna vape dalam 90 hari sebelum gejala</span></div>
+        <div class="and">DAN</div>
+        <div><b>B</b><span>Perubahan radiologi pada X-ray atau CT dada</span></div>
+        <div class="and">DAN</div>
+        <div><b>C</b><span>Tiada jangkitan pulmonari: virus respiratori negatif, PCR negatif, semua ujian jangkitan respiratori negatif (cth. <i>urine antigen S. pneumoniae</i> &amp; <i>Legionella</i>, kultur sputum dan darah, jangkitan oportunis HIV)</span></div>
+        <div class="and">DAN</div>
+        <div><b>D</b><span>Tiada diagnosis alternatif munasabah</span></div>
       </div>
     </div>
-
-    <div class="grid2" style="margin-top:20px">
-      <div class="panel">
-        <span class="tag">Seksyen 10</span>
-        <h3 style="margin-top:10px">Pengurusan kluster</h3>
-        <p class="small"><strong>Dua atau lebih</strong> kes disyaki yang mempunyai hubung kait epidemiologi melalui produk dengan <strong>jenama, jenis atau nombor kelompok yang sama</strong>.</p>
-        <ul class="tidy small" style="margin-top:10px">
-          <li>PKD mengaktifkan bilik gerakan dan menutupnya selepas pengurusan kluster tamat.</li>
-          <li>Persampelan berdasarkan penilaian risiko dan arahan IPKKM (kuasa Seksyen 27 Akta 852).</li>
-          <li>UIP Daerah dan Negeri menyiasat sumber produk dan rantaian bekalan.</li>
-          <li>Hantar <a href="#lampiran-13">Laporan Pengurusan Kluster</a> bersama <a href="#lampiran-12">Pelaporan ke CPRC</a>.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <span class="tag">Seksyen 10.5</span>
-        <h3 style="margin-top:10px">Laluan tindakan kawal selia</h3>
-        <ol class="tidy small">
-          <li>Pasukan teknikal (pakar klinikal, PKD, JKN, IPKKM) menilai maklumat klinikal, siasatan, risikan, keputusan makmal dan bukti epidemiologi.</li>
-          <li>KPK boleh menasihati Menteri menubuhkan Jawatankuasa di bawah <strong>Seksyen 21 Akta 852</strong>.</li>
-          <li>Jawatankuasa menilai hubungan produk dengan kejadian dan mengemukakan syor.</li>
-          <li>Menteri boleh melarang atau menyekat import, pengilangan, pengedaran atau penjualan produk berkenaan.</li>
-        </ol>
+    <div class="panel def">
+      <span class="tag teal">Non-EVALI</span>
+      <h3>Penyakit selain EVALI</h3>
+      <div class="crit">
+        <div><b>A</b><span>Guna produk merokok dalam 90 hari sebelum gejala kardiovaskular, pencernaan atau neurologi (selain respiratori)</span></div>
+        <div class="and">DAN</div>
+        <div><b>B</b><span>Tiada bukti jangkitan; semua ujian penyakit berjangkit negatif</span></div>
+        <div class="and">DAN / ATAU</div>
+        <div><b>C</b><span>Ada toksidrom klinikal: antikolinergik, simpatomimetik, kolinergik, opioid atau sedatif-hipnotik (<a href="#lampiran-1">Ringkasan Toksidrom</a>)</span></div>
       </div>
     </div>
+  </div>
 
-    <h3 style="margin-top:40px">Penguatkuasaan bersepadu</h3>
-    <div class="tbl-wrap">
-      <table class="t">
-        <thead><tr><th>Agensi</th><th>Peranan utama</th><th>Perundangan</th></tr></thead>
-        <tbody>
-          <tr><td>KKM</td><td>Kawalan dan pencegahan penyakit akibat produk merokok</td><td>Akta 852</td></tr>
-          <tr><td>PDRM</td><td>Siasatan jenayah, pengedaran dan penjualan produk merokok yang mengandungi bahan terlarang</td><td>Akta Dadah Berbahaya 1952; Akta Racun 1952</td></tr>
-          <tr><td>JKDM</td><td>Kawalan import, eksport, penyeludupan, cukai import dan duti eksais</td><td>Akta Kastam 1967; Akta Eksais 1976</td></tr>
-          <tr><td>KPDN</td><td>Kawalan peranti rokok elektronik</td><td>Akta Perihal Dagangan 2011</td></tr>
-          <tr><td>PBT</td><td>Pelesenan dan kawalan premis</td><td>Akta Kerajaan Tempatan 1976; Undang-undang Kecil PBT</td></tr>
-        </tbody>
-      </table>
+  <h3 class="sub">Siasatan, PDRM dan analisis sampel</h3>
+  <div class="g3">
+    <div class="panel">
+      <span class="tag">Bab 8</span>
+      <h3>Siasatan PKD</h3>
+      <ul class="tidy small">
+        <li>Dalam <strong>48 jam</strong> selepas notifikasi, guna <a href="#lampiran-4">Borang Siasatan</a>.</li>
+        <li>Temu bual bersemuka dengan kes, keluarga, penjaga, rakan atau saksi: kronologi, tarikh, masa, tempat, punca, ciri produk.</li>
+        <li>Semak rekod rawatan awal di hospital atau klinik.</li>
+        <li>Ambil barang kes, label dengan identiti kes. Ambil <strong>keseluruhan baki</strong> sampel untuk analisis termasuk <i>chemical profiling</i>.</li>
+        <li>Lawat lokasi kes memperoleh produk. Ambil <strong>sampel proxy</strong> dari saluran yang sama jika barang kes tiada.</li>
+      </ul>
     </div>
+    <div class="panel">
+      <span class="tag red">PDRM</span>
+      <h3>Bila libatkan polis</h3>
+      <ul class="tidy small">
+        <li><strong>Ada bukti kukuh</strong> (ujian urin positif dadah <em>dan</em> barang kes mengandungi bahan terlarang): hospital atau klinik <strong>membuat laporan polis</strong>.</li>
+        <li><strong>Tiada bukti</strong> (urin negatif, tiada barang kes, atau kedua-duanya): PKD boleh menghantar <a href="#lampiran-5">surat pemakluman</a> kepada BSJN IPD.</li>
+        <li>Tindakan PDRM di bawah Akta Dadah Berbahaya 1952 atau Akta Racun 1952.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <span class="tag">Bab 9</span>
+      <h3>Analisis sampel</h3>
+      <ul class="tidy small">
+        <li>Analisis: nikotin, <i>propylene glycol</i>, <i>glycerol</i> (kuantitatif) dan <i>chemical profiling</i>.</li>
+        <li>Barang kes dan sampel proxy dihantar ke <strong>MKAK</strong>.</li>
+        <li>Jika urin positif dadah: barang kes diambil PDRM dan dihantar ke <strong>Jabatan Kimia Malaysia</strong>.</li>
+        <li>Hantar hanya baki produk yang disyaki punca kejadian. Ikut <a href="#lampiran-6">carta alir pengambilan sampel</a>.</li>
+        <li>Makmal memaklumkan keputusan kepada pemohon, s.k. JKN dan IPKKM.</li>
+      </ul>
+    </div>
+  </div>
 
-    <h3 style="margin-top:40px">Peranan mengikut peringkat</h3>
-    <div>
-      <details class="role" open>
-        <summary>Hospital / Klinik Kesihatan</summary>
-        <div class="body">
-          <p class="muted">Pakar perubatan, pegawai perubatan, paramedik (jururawat, PPP), PPKP Unit Kesihatan Awam</p>
-          <ul class="tidy">
-            <li>Fahami CPG EVALI dan GP Notifikasi Edisi 2026.</li>
-            <li>Periksa pesakit, kenal pasti punca gejala dan beri rawatan.</li>
-            <li>Notifikasi kepada PKD dalam 24 jam selepas diagnosis.</li>
-            <li>Buat laporan polis jika disyaki bahan terlarang dan ada bukti kukuh.</li>
-            <li>Sahkan diagnosis akhir berdasarkan pemeriksaan, makmal dan radiologi.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="role">
-        <summary>Pejabat Kesihatan Daerah</summary>
-        <div class="body">
-          <p class="muted">PKD, PPKA, pegawai perubatan, PKP, PPKP, pegawai promosi kesihatan, PKA. Unit NCD, Survelan, UIP dan Promosi Kesihatan.</p>
-          <ul class="tidy">
-            <li>Terima, sahkan dan siasat notifikasi kes disyaki; hantar laporan ke JKN.</li>
-            <li>Ambil dan hantar barang kes dan sampel proxy ke Makmal Kesihatan Awam.</li>
-            <li>Keluarkan surat pemakluman kepada BSJN IPD bagi kes disyaki bahan terlarang.</li>
-            <li>Pantau, selaras dan analisis data peringkat daerah.</li>
-            <li>Sediakan laporan akhir; aktifkan dan tutup bilik gerakan bagi kluster.</li>
-            <li>Rancang kawalan, pencegahan, penguatkuasaan dan risikan; buka fail siasatan bagi kesalahan yang dikenal pasti.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="role">
-        <summary>Jabatan Kesihatan Negeri</summary>
-        <div class="body">
-          <p class="muted">TPKN (Kesihatan Awam), PPKA, pegawai perubatan, PKP, PPKP. Unit NCD, Survelan dan UIP.</p>
-          <ul class="tidy">
-            <li>Terima dan sahkan notifikasi daripada PKD; laporkan kepada CPRC IPKKM.</li>
-            <li>Beri khidmat kepakaran teknikal peringkat negeri.</li>
-            <li>Selaras, analisis dan pantau data serta tren negeri.</li>
-            <li>Rancang strategi, pelan tindakan dan sumber untuk kawalan, pencegahan dan penguatkuasaan.</li>
-            <li>Adakan mesyuarat penilaian situasi akut atau kritikal peringkat negeri.</li>
-            <li>Selaras penguatkuasaan dan risikan, termasuk semakan fail siasatan; urus data dan dokumentasi.</li>
-          </ul>
-        </div>
-      </details>
-      <details class="role">
-        <summary>Ibu Pejabat KKM</summary>
-        <div class="body">
-          <p class="muted">BKP, BPKA, Makmal Kesihatan Awam (MKAK)</p>
-          <ul class="tidy">
-            <li>CPRC: terima laporan awal, kluster dan akhir; semak kelengkapan; sediakan laporan situasi untuk pengurusan tertinggi.</li>
-            <li>Kepakaran teknikal, analisis tren kebangsaan, kemas kini garis panduan dan latihan berterusan.</li>
-            <li>Penilaian risiko dan penyelarasan Jawatankuasa Khas.</li>
-            <li>Makmal: tetapkan tatacara pengurusan sampel dan kaedah analisis.</li>
-            <li>Penguatkuasaan: selaras risikan dan semak fail siasatan.</li>
-          </ul>
-        </div>
-      </details>
+  <h3 class="sub">Kluster dan tindakan kawal selia</h3>
+  <div class="g2">
+    <div class="panel">
+      <span class="tag amb">Bab 10</span>
+      <h3>Pengurusan kluster</h3>
+      <p class="small"><strong>Dua atau lebih</strong> kes disyaki yang mempunyai hubung kait epidemiologi melalui produk dengan <strong>jenama, jenis atau nombor kelompok yang sama</strong>.</p>
+      <ul class="tidy small" style="margin-top:10px">
+        <li>PKD mengaktifkan bilik gerakan dan menutupnya selepas pengurusan kluster tamat.</li>
+        <li>Persampelan berdasarkan penilaian risiko dan arahan IPKKM (kuasa Seksyen 27 Akta 852).</li>
+        <li>UIP Daerah dan Negeri menyiasat sumber produk dan rantaian bekalan.</li>
+        <li>Hantar <a href="#lampiran-13">Laporan Pengurusan Kluster</a> bersama <a href="#lampiran-12">Pelaporan ke CPRC</a>.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <span class="tag">Bab 10.5</span>
+      <h3>Laluan tindakan kawal selia</h3>
+      <ol class="tidy small">
+        <li>Pasukan teknikal (pakar klinikal, PKD, JKN, IPKKM) menilai maklumat klinikal, siasatan, risikan, keputusan makmal dan bukti epidemiologi.</li>
+        <li>KPK boleh menasihati Menteri menubuhkan Jawatankuasa di bawah <strong>Seksyen 21 Akta 852</strong>.</li>
+        <li>Jawatankuasa menilai hubungan produk dengan kejadian dan mengemukakan syor.</li>
+        <li>Menteri boleh melarang atau menyekat import, pengilangan, pengedaran atau penjualan produk berkenaan.</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3 class="sub">Penguatkuasaan bersepadu</h3>
+  <div class="tw">
+    <table class="t">
+      <thead><tr><th>Agensi</th><th>Peranan utama</th><th>Perundangan</th></tr></thead>
+      <tbody>
+        <tr><td>KKM</td><td>Kawalan dan pencegahan penyakit akibat produk merokok</td><td>Akta 852</td></tr>
+        <tr><td>PDRM</td><td>Siasatan jenayah, pengedaran dan penjualan produk merokok yang mengandungi bahan terlarang</td><td>Akta Dadah Berbahaya 1952; Akta Racun 1952</td></tr>
+        <tr><td>JKDM</td><td>Kawalan import, eksport, penyeludupan, cukai import dan duti eksais</td><td>Akta Kastam 1967; Akta Eksais 1976</td></tr>
+        <tr><td>KPDN</td><td>Kawalan peranti rokok elektronik</td><td>Akta Perihal Dagangan 2011</td></tr>
+        <tr><td>PBT</td><td>Pelesenan dan kawalan premis</td><td>Akta Kerajaan Tempatan 1976; Undang-undang Kecil PBT</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub">Peranan mengikut peringkat</h3>
+  <div class="roles">
+    <div class="panel">
+      <h3>Hospital / Klinik Kesihatan</h3>
+      <p class="who">Pakar perubatan, pegawai perubatan, paramedik, PPKP Unit Kesihatan Awam</p>
+      <ul class="tidy small">
+        <li>Fahami CPG EVALI dan GP Notifikasi Edisi 2026.</li>
+        <li>Periksa pesakit, kenal pasti punca gejala dan beri rawatan.</li>
+        <li>Notifikasi kepada PKD dalam 24 jam selepas diagnosis.</li>
+        <li>Buat laporan polis jika disyaki bahan terlarang dan ada bukti kukuh.</li>
+        <li>Sahkan diagnosis akhir berdasarkan pemeriksaan, makmal dan radiologi.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Pejabat Kesihatan Daerah</h3>
+      <p class="who">Unit NCD, Survelan, UIP dan Promosi Kesihatan</p>
+      <ul class="tidy small">
+        <li>Terima, sahkan dan siasat notifikasi kes disyaki; hantar laporan ke JKN.</li>
+        <li>Ambil dan hantar barang kes dan sampel proxy ke Makmal Kesihatan Awam.</li>
+        <li>Keluarkan surat pemakluman kepada BSJN IPD bagi kes disyaki bahan terlarang.</li>
+        <li>Pantau, selaras dan analisis data peringkat daerah.</li>
+        <li>Sediakan laporan akhir; aktifkan dan tutup bilik gerakan bagi kluster.</li>
+        <li>Rancang kawalan, pencegahan, penguatkuasaan dan risikan; buka fail siasatan bagi kesalahan yang dikenal pasti.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Jabatan Kesihatan Negeri</h3>
+      <p class="who">TPKN (Kesihatan Awam), Unit NCD, Survelan dan UIP</p>
+      <ul class="tidy small">
+        <li>Terima dan sahkan notifikasi daripada PKD; laporkan kepada CPRC IPKKM.</li>
+        <li>Beri khidmat kepakaran teknikal peringkat negeri.</li>
+        <li>Selaras, analisis dan pantau data serta tren negeri.</li>
+        <li>Rancang strategi, pelan tindakan dan sumber untuk kawalan, pencegahan dan penguatkuasaan.</li>
+        <li>Adakan mesyuarat penilaian situasi akut atau kritikal peringkat negeri.</li>
+        <li>Selaras penguatkuasaan dan risikan, termasuk semakan fail siasatan.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Ibu Pejabat KKM</h3>
+      <p class="who">BKP, BPKA, Makmal Kesihatan Awam (MKAK)</p>
+      <ul class="tidy small">
+        <li>CPRC: terima laporan awal, kluster dan akhir; semak kelengkapan; sediakan laporan situasi.</li>
+        <li>Kepakaran teknikal, analisis tren kebangsaan, kemas kini garis panduan dan latihan berterusan.</li>
+        <li>Penilaian risiko dan penyelarasan Jawatankuasa Khas.</li>
+        <li>Makmal: tetapkan tatacara pengurusan sampel dan kaedah analisis.</li>
+        <li>Penguatkuasaan: selaras risikan dan semak fail siasatan.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ===================== KLASIFIKASI ===================== -->
+<!-- ================= 03 KLASIFIKASI ================= -->
 <section class="sec" id="klasifikasi">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-no">03</span><h2>Alat Bantu Klasifikasi Kes</h2></div>
-    <p class="muted" style="max-width:72ch;margin-bottom:20px">Berdasarkan Rajah 4 (Definisi Kes) dalam GP. Jawab setiap soalan untuk mendapatkan kategori kes. Klasifikasi akhir tetap bergantung pada penilaian klinikal dan pengesahan diagnosis.</p>
-    <div class="clf">
-      <ol class="steps" id="clfSteps"></ol>
-      <div class="result x" id="clfResult" aria-live="polite"></div>
-    </div>
+  <h2>Alat bantu klasifikasi kes <small>Rajah 4 GP</small></h2>
+  <p class="muted" style="max-width:70ch;margin-bottom:18px">Jawab setiap soalan untuk mendapatkan kategori kes. Klasifikasi akhir tetap bergantung pada penilaian klinikal dan pengesahan diagnosis.</p>
+  <div class="clf">
+    <ol class="steps" id="clfSteps"></ol>
+    <div class="result" id="clfResult" aria-live="polite"></div>
   </div>
 </section>
 
-<!-- ===================== PUNCA KUASA ===================== -->
+<!-- ================= 04 PUNCA KUASA ================= -->
 <section class="sec" id="kuasa">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-no">04</span><h2>Punca Kuasa &amp; Dokumen Rujukan</h2></div>
-    <div class="grid2">
-      <div class="panel">
-        <span class="tag red">Arahan</span>
-        <h3 style="margin-top:10px">Surat Pekeliling Ketua Pengarah Kesihatan Malaysia Bil. 25/2026</h3>
-        <p class="small">Arahan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok</p>
-        <dl class="doc-meta">
-          <dt>Rujukan</dt><dd>KKM.600-40/1/10 Jld. 2 (58)</dd>
-          <dt>Tarikh</dt><dd>19 Oktober 2026</dd>
-          <dt>Kuat kuasa</dt><dd>Mulai tarikh surat</dd>
-          <dt>Menggantikan</dt><dd>SPKPK Bil. 14/2022</dd>
+  <h2>Punca kuasa &amp; dokumen rujukan</h2>
+  <div class="g2">
+    <div class="panel">
+      <span class="tag red">Arahan</span>
+      <h3>Surat Pekeliling Ketua Pengarah Kesihatan Malaysia Bil. 25/2026</h3>
+      <p class="small">Arahan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok</p>
+      <dl class="meta">
+        <dt>Rujukan</dt><dd>KKM.600-40/1/10 Jld. 2 (58)</dd>
+        <dt>Tarikh</dt><dd>19 Oktober 2026</dd>
+        <dt>Kuat kuasa</dt><dd>Mulai tarikh surat</dd>
+        <dt>Menggantikan</dt><dd>SPKPK Bil. 14/2022</dd>
+      </dl>
+      <div class="btns">
+        <a class="btn pri" href="files/Surat_Pekeliling_KPK_Bil_25_2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Buka pekeliling</a>
+      </div>
+    </div>
+    <div class="panel doc">
+      <img src="assets/gp-kulit-01.jpg" alt="Kulit Garis Panduan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026">
+      <div>
+        <span class="tag teal">Garis panduan</span>
+        <h3 style="font-size:1.08rem;margin:10px 0 0">GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok, Edisi 2026</h3>
+        <dl class="meta">
+          <dt>No. dokumen</dt><dd>MOH/K/EPI/91.26(GU)</dd>
+          <dt>ISBN</dt><dd>978-629-94358-9-1</dd>
+          <dt>Penerbit</dt><dd>BKP, KKM</dd>
         </dl>
         <div class="btns">
-          <a class="btn pri" href="files/Surat_Pekeliling_KPK_Bil_25_2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Buka pekeliling (PDF)</a>
-          <a class="btn" href="https://drive.google.com/file/d/1E9cbk8TOK6brC6DKQdMycCgROU4tsxos/view" target="_blank" rel="noopener">Google Drive</a>
-        </div>
-      </div>
-      <div class="panel">
-        <div class="auth">
-          <img src="assets/gp-kulit-01.jpg" alt="Kulit Garis Panduan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026">
-          <div>
-            <span class="tag teal">Garis Panduan</span>
-            <h3 style="margin-top:10px">GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok, Edisi 2026</h3>
-            <dl class="doc-meta">
-              <dt>No. dokumen</dt><dd>MOH/K/EPI/91.26(GU)</dd>
-              <dt>ISBN</dt><dd>978-629-94358-9-1</dd>
-              <dt>Penerbit</dt><dd>BKP, KKM</dd>
-            </dl>
-            <div class="btns">
-              <a class="btn pri" href="files/GP_Notifikasi_Situasi_Akut_Kritikal_Produk_Merokok_2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Buka GP (PDF)</a>
-              <a class="btn" href="https://drive.google.com/file/d/1_Kk7T6rMCxgyNsnN1KdJnyOKYVWfx-_a/view" target="_blank" rel="noopener">Versi cetak</a>
-              <a class="btn" href="https://drive.google.com/file/d/1nsLAZ3QTx-ACgS2z_8EMa3OlxaHg-53U/view" target="_blank" rel="noopener">Versi e-book</a>
-            </div>
-          </div>
+          <a class="btn pri" href="files/GP_Notifikasi_Situasi_Akut_Kritikal_Produk_Merokok_2026.pdf" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>Buka GP</a>
         </div>
       </div>
     </div>
+  </div>
 
-    <h3 style="margin-top:36px">Peruntukan undang-undang berkaitan</h3>
-    <div class="law">
-      <div><b>Akta 852, s.2</b><span>Takrif produk merokok, produk tembakau, bahan merokok dan produk pengganti tembakau.</span></div>
-      <div><b>Akta 852, s.21</b><span>Menteri boleh melarang atau menyekat import, pengilangan, pengedaran atau penjualan produk merokok atas syor Jawatankuasa yang menilai situasi akut atau kritikal.</span></div>
-      <div><b>Akta 852, s.27</b><span>Pegawai diberi kuasa boleh meminta, memilih, mengambil atau memperoleh sampel produk merokok untuk analisis. s.27(1): dapatkan resit; s.27(2): resit tidak perlu.</span></div>
-      <div><b>Akta 852, s.28(2)</b><span>Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24 (Sektor Inspektorat dan Perundangan, BPKA, 1 Oktober 2024). <a href="#lampiran-6">Lihat carta alir</a></span></div>
-      <div><b>Akta 234 &amp; 366</b><span>Akta Dadah Berbahaya 1952 dan Akta Racun 1952: tindakan PDRM bagi produk yang mengandungi bahan terlarang.</span></div>
-      <div><b>CPG EVALI 2021</b><span>Management of E-cigarette or Vaping Product Use-Associated Lung Injury (EVALI), MaHTAS, KKM &amp; Academy of Medicine Malaysia. Rujukan diagnosis dan pengurusan klinikal.</span></div>
-    </div>
-
-    <div class="callout" style="margin-top:24px">
-      <strong>Pertanyaan teknikal:</strong> Pengarah Bahagian Kawalan Penyakit, KKM, Aras 3, Blok E10, Kompleks E, Pusat Pentadbiran Kerajaan Persekutuan, 62590 Putrajaya.<br>
-      Tel: <span class="copy">03-8892 4530</span> &nbsp;·&nbsp; E-mel: <span class="copy">fctcmalaysia@moh.gov.my</span>
-    </div>
+  <h3 class="sub">Peruntukan undang-undang berkaitan</h3>
+  <div class="law">
+    <div><b>Akta 852, s.2</b><span>Takrif produk merokok, produk tembakau, bahan merokok dan produk pengganti tembakau.</span></div>
+    <div><b>Akta 852, s.21</b><span>Menteri boleh melarang atau menyekat import, pengilangan, pengedaran atau penjualan produk merokok atas syor Jawatankuasa yang menilai situasi akut atau kritikal.</span></div>
+    <div><b>Akta 852, s.27</b><span>Pegawai diberi kuasa boleh meminta, memilih, mengambil atau memperoleh sampel produk merokok untuk analisis. s.27(1): dapatkan resit; s.27(2): resit tidak perlu.</span></div>
+    <div><b>Akta 852, s.28(2)</b><span>Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24 (Sektor Inspektorat dan Perundangan, BPKA, 1 Oktober 2024). <a href="#lampiran-6">Carta alir</a> · <a href="files/Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf" target="_blank" rel="noopener">Tatacara (PDF)</a></span></div>
+    <div><b>Akta 234 &amp; 366</b><span>Akta Dadah Berbahaya 1952 dan Akta Racun 1952: tindakan PDRM bagi produk yang mengandungi bahan terlarang.</span></div>
+    <div><b>CPG EVALI 2021</b><span>Management of E-cigarette or Vaping Product Use-Associated Lung Injury (EVALI), MaHTAS, KKM &amp; Academy of Medicine Malaysia. Rujukan diagnosis dan pengurusan klinikal.</span></div>
+  </div>
+  <div class="callout" style="margin-top:20px">
+    <strong>Pertanyaan teknikal:</strong> Pengarah Bahagian Kawalan Penyakit, KKM, Aras 3, Blok E10, Kompleks E, Pusat Pentadbiran Kerajaan Persekutuan, 62590 Putrajaya.<br>
+    Tel: <span class="copy">03-8892 4530</span> · E-mel: <span class="copy">fctcmalaysia@moh.gov.my</span>
   </div>
 </section>
 
-<!-- ===================== LAMPIRAN INDEX ===================== -->
+<!-- ================= 05 LAMPIRAN ================= -->
 <section class="sec" id="lampiran">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-no">05</span><h2>Lampiran, Carta Alir &amp; Borang</h2></div>
-    <p class="muted" style="max-width:72ch;margin-bottom:20px">Setiap lampiran dibina semula dalam format A4 untuk dicetak terus. Salinan PDF asal daripada GP dan templat Word yang boleh disunting turut disediakan.</p>
-    <div class="lamp-list" id="lampList"></div>
-  </div>
+  <h2>Lampiran, carta alir &amp; borang</h2>
+  <p class="muted" style="max-width:70ch">Setiap borang dan carta alir dibina semula dalam format A4. Buka untuk paparan di skrin, cetak terus, atau muat turun PDF. Templat Word yang boleh disunting disediakan untuk surat dan laporan.</p>
+  <div id="lampIndex"></div>
 </section>
+  </main>
+</div>
+</div>
 
-</div><!-- /home -->
-
-<!-- ===================== LAMPIRAN VIEWS ===================== -->
 <div id="views">
 
+
 <!-- L1 TOKSIDROM -->
-<section class="lview" id="lampiran-1"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-1"><div class="sheets">
 <div class="sheet">
   <div class="bigtitle">RINGKASAN TOKSIDROM DAN<br>PEMERIKSAAN KLINIKAL UTAMA</div>
   <table class="ft" style="font-family:Arial,'Liberation Sans',sans-serif;font-size:10.5pt;margin-top:4mm">
@@ -706,10 +838,10 @@ footer a{color:#FFFFFF}
   <p style="margin-top:6mm;font-size:10pt;text-align:justify"><b>Toksidrom</b> (gabungan perkataan <i>toksik</i> dan <i>sindrom</i>) ialah gabungan gejala dan tanda fizikal yang menunjukkan pesakit telah terdedah atau mengalami keracunan akibat bahan kimia, ubat-ubatan atau bahan beracun tertentu. Kehadiran toksidrom klinikal ialah kriteria C bagi kes penyakit selain EVALI (Non-EVALI).</p>
   <div class="src-foot">Sumber: Lampiran 1, GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026, BKP KKM.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L2 BORANG NOTIFIKASI -->
-<section class="lview" id="lampiran-2"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-2"><div class="sheets">
 <div class="sheet">
   <div class="hd">Bahagian Kawalan Penyakit, Kementerian Kesihatan Malaysia<br>NOTIFIKASI/PM.FCTC-2026</div>
   <div class="ftitle">BORANG NOTIFIKASI SITUASI AKUT ATAU KRITIKAL BERKAITAN PRODUK MEROKOK</div>
@@ -850,16 +982,16 @@ footer a{color:#FFFFFF}
   <p class="note" style="margin-top:6mm">JKN HENDAKLAH MENGHANTAR BORANG NOTIFIKASI BESERTA PENGESAHAN KES DISYAKI INI KEPADA IBU PEJABAT KEMENTERIAN KESIHATAN MALAYSIA DALAM TEMPOH 24 JAM SELEPAS PKD MENERIMA NOTIFIKASI DARIPADA HOSPITAL ATAU KLINIK KESIHATAN.</p>
   
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L3 CARTA ALIR PENGURUSAN NOTIFIKASI -->
-<section class="lview" id="lampiran-3"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-3"><div class="sheets">
 <div class="sheet" style="padding-top:11mm">
   <div class="bigtitle" style="font-size:13pt;margin:2px 0 8px">CARTA ALIR PENGURUSAN NOTIFIKASI SITUASI AKUT ATAU<br>KRITIKAL AKIBAT PRODUK MEROKOK</div>
   <table class="fc3">
     <thead><tr><th>TANGGUNGJAWAB</th><th>PROSES KERJA</th><th>TINDAKAN</th></tr></thead>
     <tbody>
-      <tr><td class="who"></td><td class="proc"><span class="spine top"></span><span class="node end"></span></td><td style="text-align:center">Mula</td></tr>
+      <tr class="first"><td class="who"></td><td class="proc"><span class="spine top"></span><span class="node end"></span></td><td class="ctr">Mula</td></tr>
       <tr><td class="who">Hospital / Klinik Kesihatan</td><td class="proc"><span class="spine"></span><span class="node"></span></td><td class="act"><div class="n"><span>1.</span><span>Kes disyaki mengalami situasi akut atau kritikal akibat produk merokok dikenal pasti.<br><br>Membuat laporan polis jika keputusan ujian urin positif dadah dan memperoleh barang kes yang disyaki mengandungi bahan terlarang.</span></div><div class="gotos"><a class="goto" href="#lampiran-1">Toksidrom (L1)</a></div></td></tr>
       <tr><td class="who">Hospital / Klinik Kesihatan</td><td class="proc"><span class="spine"></span><span class="node"></span></td><td class="act"><div class="n"><span>2.</span><span>Melengkapkan Borang Notifikasi Situasi Akut atau Kritikal Berkaitan Produk Merokok dan menghantar kepada PKD dalam tempoh <b>24 jam</b> selepas diagnosis.</span></div><div class="gotos"><a class="goto" href="#lampiran-2">Borang Notifikasi (L2)</a></div></td></tr>
       <tr><td class="who">Pejabat Kesihatan Daerah (PKD)</td><td class="proc"><span class="spine"></span><span class="node"></span></td><td class="act"><div class="n"><span>3.</span><span>Membuat pengesahan kes dan menghantar borang notifikasi yang disahkan kepada JKN.</span></div><div class="gotos"><a class="goto" href="#lampiran-2">Bahagian 6, L2</a></div></td></tr>
@@ -870,15 +1002,15 @@ footer a{color:#FFFFFF}
       <tr><td class="who">Jabatan Kesihatan Negeri (JKN)</td><td class="proc"><span class="spine"></span><span class="side"></span></td><td class="act"><div class="n"><span>8.</span><span>Membuat ulasan dan menghantar laporan pengurusan kluster yang telah disemak kepada IPKKM.</span></div></td></tr>
       <tr><td class="who">Pejabat Kesihatan Daerah (PKD)</td><td class="proc"><span class="spine"></span><span class="node"></span></td><td class="act"><div class="n"><span>9.</span><span>Menyediakan dan menghantar laporan akhir ke JKN.</span></div><div class="gotos"><a class="goto" href="#lampiran-11">Laporan Akhir (L7)</a></div></td></tr>
       <tr><td class="who">Jabatan Kesihatan Negeri (JKN)</td><td class="proc"><span class="spine"></span><span class="node"></span></td><td class="act"><div class="n"><span>10.</span><span>Membuat ulasan dan menghantar laporan akhir yang lengkap kepada IPKKM:<ul><li>Sporadik: dalam tempoh <b>tujuh (7) hari</b> selepas PKD menerima notifikasi daripada hospital atau klinik kesihatan.</li><li>Kluster: selepas penutupan bilik gerakan.</li></ul></span></div></td></tr>
-      <tr><td class="who"></td><td class="proc"><span class="spine bot"></span><span class="node end"></span></td><td style="text-align:center">Tamat</td></tr>
+      <tr class="last"><td class="who"></td><td class="proc"><span class="spine bot"></span><span class="node end"></span></td><td class="ctr">Tamat</td></tr>
     </tbody>
   </table>
   <div class="src-foot" style="padding-top:3mm">Sumber: Lampiran 3, GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026. Pautan berwarna membuka borang berkaitan dalam hub ini.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L4 BORANG SIASATAN -->
-<section class="lview" id="lampiran-4"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-4"><div class="sheets">
 <div class="sheet">
   <div class="hd">Bahagian Kawalan Penyakit, Kementerian Kesihatan Malaysia<br>SIASATAN/PM.FCTC-2026</div>
   <div class="ftitle">BORANG SIASATAN SITUASI AKUT ATAU KRITIKAL BERKAITAN PRODUK MEROKOK</div>
@@ -968,7 +1100,7 @@ footer a{color:#FFFFFF}
   <div class="hd">Bahagian Kawalan Penyakit, Kementerian Kesihatan Malaysia<br>SIASATAN/PM.FCTC-2026</div>
   <div class="ftitle">BORANG SIASATAN SITUASI AKUT ATAU KRITIKAL BERKAITAN PRODUK MEROKOK</div>
   <div class="bar">6. BUTIRAN PEGAWAI PENYIASAT</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 7mm">
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:0 7mm">
     <div class="f n"><span>Nama</span><span>:</span><span></span></div>
     <div class="f n"><span>Jawatan &amp; gred</span><span>:</span><span></span></div>
   </div>
@@ -988,7 +1120,7 @@ footer a{color:#FFFFFF}
     <div class="cb in"><i>E-cigarette or Vaping Use without Lung Injury</i></div><div class="cb in"><i>E-cigarette or Vaping with Substance Use</i></div>
     <div class="cb">Berkaitan lain-lain produk merokok (produk tembakau atau produk pengganti tembakau)</div>
   </span></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 7mm;margin-top:6px">
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:0 7mm;margin-top:6px">
     <div><b>Disediakan oleh</b><div class="f n" style="margin-top:4px"><span>Nama</span><span>:</span><span></span></div><div class="f n"><span>Jawatan</span><span>:</span><span></span></div><div class="f n"><span>Tempat bertugas</span><span>:</span><span></span></div><div class="f n"><span>Tarikh</span><span>:</span><span></span></div></div>
     <div><b>Disemak dan disahkan oleh</b><div class="f n" style="margin-top:4px"><span>Nama</span><span>:</span><span></span></div><div class="f n"><span>Jawatan</span><span>:</span><span></span></div><div class="f n"><span>Tempat bertugas</span><span>:</span><span></span></div><div class="f n"><span>Tarikh</span><span>:</span><span></span></div></div>
   </div>
@@ -1002,10 +1134,10 @@ footer a{color:#FFFFFF}
   <p class="note" style="margin-top:4mm">JKN HENDAKLAH MENGHANTAR LAPORAN AWAL INI KEPADA IBU PEJABAT KEMENTERIAN KESIHATAN MALAYSIA DALAM TEMPOH 48 JAM SELEPAS PKD MENERIMA NOTIFIKASI DARIPADA PIHAK HOSPITAL ATAU KLINIK KESIHATAN.</p>
   
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L5 SURAT PEMAKLUMAN PDRM -->
-<section class="lview" id="lampiran-5"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-5"><div class="sheets">
 <div class="sheet" style="font-family:Arial,'Liberation Sans',sans-serif;font-size:11pt;line-height:1.5">
   <div class="bigtitle" style="font-size:12.5pt">FORMAT SURAT PEMAKLUMAN KEPADA PDRM</div>
   <div style="text-align:center;font-style:italic;color:#555;border:1px dashed #999;padding:6px;margin-bottom:6mm">(Menggunakan kepala surat jabatan)</div>
@@ -1025,13 +1157,12 @@ footer a{color:#FFFFFF}
   <p style="margin-top:16mm">(<span class="ul" style="min-width:50mm"></span>)<br>(Jawatan)<br>(Pejabat Kesihatan <span class="ul"></span>)</p>
   <div class="src-foot">Sumber: Lampiran 5, GP Notifikasi Edisi 2026. Templat Word yang boleh disunting disediakan.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L6 CARTA ALIR PENGAMBILAN SAMPEL -->
-<section class="lview" id="lampiran-6"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-6"><div class="sheets">
 <div class="sheet" style="padding-top:11mm">
-  <div class="bigtitle" style="font-size:12pt;margin:2px 0 2px">CARTA ALIR PENGAMBILAN SAMPEL DI BAWAH SEKSYEN 28(2)<br>AKTA KAWALAN PRODUK MEROKOK DEMI KESIHATAN AWAM 2024 [AKTA 852]</div>
-  <div style="text-align:center;font-family:Arial,sans-serif;font-size:9pt">Tatacara UIP-AKPMDKA-04-24</div>
+  <div style="font-family:Arial,'Liberation Sans',sans-serif;font-weight:700;font-size:12pt">CARTA ALIR</div>
   <div class="fc6">
     <div class="st term">Mula</div><div class="ar"></div>
     <div class="st">Taklimat kepada pasukan</div><div class="ar"></div>
@@ -1046,13 +1177,13 @@ footer a{color:#FFFFFF}
       <div><div class="st">Seksyen 27(1) – Dapatkan resit</div></div>
     </div>
     <div class="join"></div><div class="ar"></div>
-    <div class="st link"><a class="goto-fc" href="#lampiran-7">Isi borang notis persampelan<small>Borang A · Notis Seksyen 28(1) ↗</small></a></div><div class="ar"></div>
-    <div class="st link"><a class="goto-fc" href="#lampiran-8">Isi label sampel<small>Jadual Pertama · Borang 1 ↗</small></a></div><div class="ar"></div>
+    <div class="st link"><a class="goto-fc" href="#lampiran-7">Isi borang notis persampelan<small>Borang A · Notis Seksyen 28(1) <span class="ext">↗</span></small></a></div><div class="ar"></div>
+    <div class="st link"><a class="goto-fc" href="#lampiran-8">Isi label sampel<small>Jadual Pertama · Borang 1 <span class="ext">↗</span></small></a></div><div class="ar"></div>
     <div class="st">Tanda, label dan lak sampel</div><div class="ar"></div>
-    <div class="st link"><a class="goto-fc" href="#lampiran-9">Isi borang permohonan analisis<small>Permintaan bagi Analisis Produk Merokok ↗</small></a></div><div class="ar"></div>
+    <div class="st link"><a class="goto-fc" href="#lampiran-9">Isi borang permohonan analisis<small>Permintaan bagi Analisis Produk Merokok <span class="ext">↗</span></small></a></div><div class="ar"></div>
     <div class="st">Hantar sampel ke juruanalisis di Jabatan Kimia / makmal</div><div class="ar"></div>
     <div class="st">Dapatkan resit penerimaan sampel</div><div class="ar"></div>
-    <div class="st link"><a class="goto-fc" href="#lampiran-10">Dapatkan perakuan juruanalisis<small>Perakuan Juruanalisis ↗</small></a></div><div class="ar"></div>
+    <div class="st link"><a class="goto-fc" href="#lampiran-10">Dapatkan perakuan juruanalisis<small>Perakuan Juruanalisis <span class="ext">↗</span></small></a></div><div class="ar"></div>
     <div class="dia"></div>
     <div class="split">
       <div><div class="st">Keputusan tidak melanggar</div><div class="ar" style="height:14mm"></div></div>
@@ -1061,12 +1192,11 @@ footer a{color:#FFFFFF}
     <div class="join"></div><div class="ar"></div>
     <div class="st term">Tamat</div>
   </div>
-  <div class="src-foot" style="padding-top:3mm">Sumber: Sektor Inspektorat dan Perundangan, BPKA, KKM (Lampiran 6, GP Edisi 2026). Kotak berwarna membuka borang berkaitan.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L6 BORANG A NOTIS PERSAMPELAN -->
-<section class="lview" id="lampiran-7"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-7"><div class="sheets">
 <div class="sheet serif" style="font-size:11.5pt">
   <div style="text-align:right;font-weight:700;font-family:Arial,sans-serif">Borang A</div>
   <img class="crest" src="assets/jata-negara.png" alt="Jata Negara">
@@ -1083,27 +1213,26 @@ footer a{color:#FFFFFF}
     <tbody><tr style="height:24mm"><td></td><td></td><td></td><td></td><td></td></tr></tbody>
   </table>
   <p style="margin-top:6mm">Bertarikh pada : <span class="dots"></span></p>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm;align-items:end">
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm;align-items:end">
     <div><span class="dots" style="min-width:70mm"></span><br>( Tandatangan Pegawai Diberikuasa)</div>
     <div>Tuan/ puan dinasihatkan untuk menyerahkan salinan notis ini kepada pengimport/ pembungkus/ pembekal produk tersebut.</div>
   </div>
-  <div style="margin-left:50%;margin-top:6mm;display:grid;grid-template-columns:34mm 4mm 1fr;row-gap:3mm">
+  <div class="push" style="margin-left:50%;margin-top:6mm;display:grid;grid-template-columns:34mm 4mm 1fr;row-gap:3mm">
     <span>Tandatangan Penerima Notis</span><span>:</span><span class="dots s"></span>
     <span>Nama</span><span>:</span><span class="dots s"></span>
     <span>No K/P</span><span>:</span><span class="dots s"></span>
   </div>
   <p style="margin-top:6mm;font-size:10pt">*potong mana tidak berkenaan</p>
-  <div class="src-foot">Sumber: Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24, Sektor Inspektorat dan Perundangan, BPKA, KKM.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L6 BORANG 1 LABEL -->
-<section class="lview" id="lampiran-8"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-8"><div class="sheets">
 <div class="sheet serif" style="font-size:10.5pt">
   <div style="text-align:center;font-family:Arial,sans-serif;font-weight:700;font-size:13pt">JADUAL PERTAMA</div>
   <div style="text-align:center;font-family:Arial,sans-serif;font-weight:700;font-size:12pt;margin-top:2mm">Borang 1</div>
   <div style="text-align:center;font-family:Arial,sans-serif;font-size:10.5pt;margin:2mm 0 6mm">LABEL BAGI PRODUK TEMBAKAU/ PRODUK PENGGANTI TEMBAKAU/ BAHAN MEROKOK</div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.3px dashed #555">
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.3px dashed #555">
     <div style="padding:5mm;border-right:1.3px dashed #555;line-height:1.75">
       <div>( No siri &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</div>
       <div style="text-align:center;font-weight:700;line-height:1.3;margin:2mm 0">AKTA KAWALAN PRODUK MEROKOK DEMI KESIHATAN AWAM 2024 [<i>AKTA 852</i>]<br><span style="font-weight:400">( PROSEDUR PENGAMBILAN SAMPEL ) 2024<br>Seksyen 27</span></div>
@@ -1149,15 +1278,14 @@ footer a{color:#FFFFFF}
       </div>
     </div>
   </div>
-  <div class="src-foot">Garisan putus-putus ialah garisan potong. Sumber: Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24, BPKA, KKM.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L6 PERMINTAAN ANALISIS -->
-<section class="lview" id="lampiran-9"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-9"><div class="sheets">
 <div class="sheet" style="font-size:11.3pt;line-height:1.6">
   <div style="text-align:center;font-weight:700;font-size:13pt;margin:4mm 0 8mm">PERMINTAAN BAGI ANALISIS PRODUK MEROKOK</div>
-  <div style="display:grid;grid-template-columns:1fr 62mm;gap:8mm">
+  <div class="two" style="display:grid;grid-template-columns:1fr 62mm;gap:8mm">
     <div>No. Rujukan Pejabat: <span class="dots"></span></div>
     <div>Pejabat Kesihatan:<br><span class="dots" style="min-width:60mm"></span><br><span class="dots" style="min-width:60mm"></span><br>Tarikh: <span class="dots"></span></div>
   </div>
@@ -1174,7 +1302,7 @@ footer a{color:#FFFFFF}
     </tbody>
   </table>
   <p style="margin-top:6mm">Jenis analisis yang dikehendaki bagi sampel adalah seperti yang berikut:</p>
-  <table style="width:78%;border-collapse:collapse;margin-top:2mm">
+  <table class="wide" style="width:78%;border-collapse:collapse;margin-top:2mm">
     <thead><tr style="font-style:italic"><th style="width:8%"></th><th style="font-weight:400;text-align:left">No. Rujukan Sampel</th><th style="font-weight:400;text-align:left">Jenis Analisis</th></tr></thead>
     <tbody>
       <tr><td>1.</td><td><span class="dots" style="min-width:44mm"></span></td><td><span class="dots" style="min-width:56mm"></span></td></tr>
@@ -1185,12 +1313,11 @@ footer a{color:#FFFFFF}
   <div style="margin:18mm 0 0 auto;width:72mm;text-align:left"><span class="dots" style="min-width:72mm"></span><br><span class="dots" style="min-width:72mm"></span><br><span class="dots" style="min-width:72mm"></span><br><i>Nama dan Jawatan Pegawai Berkuasa</i></div>
   <p style="margin-top:8mm;font-size:10.5pt">NOTA: Sampel ini telah diambil mengikut tatacara yang dinyatakan oleh Akta Kawalan Produk Merokok Demi Kesihatan Awam 2024 [<i>Akta 852</i>].</p>
   <div style="border-top:1.5px solid #B33;margin-top:2mm;text-align:center;font-style:italic;font-size:10pt">*Potong yang mana tidak berkenaan.</div>
-  <div class="src-foot">Sumber: Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24, BPKA, KKM.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L6 PERAKUAN JURUANALISIS -->
-<section class="lview" id="lampiran-10"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-10"><div class="sheets">
 <div class="sheet" style="font-size:11.5pt;line-height:1.75">
   <div style="text-align:center;font-weight:700;font-size:13pt;margin:4mm 0 8mm">PERAKUAN JURUANALISIS</div>
   <div>NO. MAKMAL: <span class="dots"></span></div>
@@ -1213,12 +1340,11 @@ footer a{color:#FFFFFF}
     <div style="text-align:center"><span class="dots" style="min-width:70mm"></span><br>(Nama dan Jawatan Juruanalisis)</div>
   </div>
   <p style="margin-top:6mm;font-size:10pt;font-style:italic">*Potong yang mana tidak berkenaan</p>
-  <div class="src-foot">Sumber: Tatacara Pengambilan Sampel UIP-AKPMDKA-04-24, BPKA, KKM. Diisi oleh juruanalisis makmal.</div>
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L7 LAPORAN AKHIR -->
-<section class="lview" id="lampiran-11"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-11"><div class="sheets">
 <div class="sheet" style="font-family:Arial,'Liberation Sans',sans-serif;font-size:10.5pt">
   <div class="bigtitle" style="font-size:13pt">LAPORAN AKHIR SITUASI AKUT ATAU KRITIKAL</div>
   <table class="ft" style="font-size:10.5pt">
@@ -1262,10 +1388,10 @@ footer a{color:#FFFFFF}
   </div>
   
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L9 CPRC -->
-<section class="lview" id="lampiran-12"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-12"><div class="sheets">
 <div class="sheet" style="font-family:Arial,'Liberation Sans',sans-serif;font-size:9.8pt;line-height:1.3">
   <img class="crest" src="assets/jata-negara.png" alt="Jata Negara" style="height:18mm;margin-top:2mm">
   <div style="text-align:center;font-weight:700;font-size:11pt">DISEASE CONTROL DIVISION<br>MINISTRY OF HEALTH<br>MALAYSIA</div>
@@ -1311,10 +1437,10 @@ footer a{color:#FFFFFF}
   <div style="text-align:center;font-size:8.5pt;margin-top:1mm"><sup>2</sup>MHPRT - Mental Health Psychosocial Response Team</div>
   
 </div>
-</div></div></section>
+</div></section>
 
 <!-- L8 KLUSTER -->
-<section class="lview" id="lampiran-13"><div class="wrap"><div class="sheets">
+<section class="lview" id="lampiran-13"><div class="sheets">
 <div class="sheet">
   <div class="hd">Bahagian Kawalan Penyakit, Kementerian Kesihatan Malaysia<br>KLUSTER/PM.FCTC-2026</div>
   <div style="text-align:right;margin-top:3mm"><b>NO. KLUSTER:</b> <span class="ul" style="min-width:40mm"></span></div>
@@ -1352,10 +1478,10 @@ footer a{color:#FFFFFF}
     <span>iii) Bilangan kematian</span><span>: <span class="ul"></span> orang</span>
   </div>
   <div style="margin-top:4mm"><b>Kumpulan umur</b></div>
-  <table class="ft" style="width:70%;margin-top:2mm"><thead><tr><th>Umur</th><th style="width:28%">Lelaki</th><th style="width:28%">Perempuan</th></tr></thead>
+  <table class="ft wide" style="width:70%;margin-top:2mm"><thead><tr><th>Umur</th><th style="width:28%">Lelaki</th><th style="width:28%">Perempuan</th></tr></thead>
     <tbody><tr><td>0 – 1 tahun</td><td></td><td></td></tr><tr><td>2 – 6 tahun</td><td></td><td></td></tr><tr><td>7 – 10 tahun</td><td></td><td></td></tr><tr><td>11 – 17 tahun</td><td></td><td></td></tr><tr><td>18 – 49 tahun</td><td></td><td></td></tr><tr><td>≥ 50 tahun</td><td></td><td></td></tr><tr><th>JUMLAH</th><td></td><td></td></tr></tbody></table>
   <div style="margin-top:5mm"><b>Gejala klinikal</b></div>
-  <table class="ft" style="width:70%;margin-top:2mm"><thead><tr><th>Gejala</th><th style="width:22%">Bilangan</th><th style="width:22%">Peratus</th></tr></thead>
+  <table class="ft wide" style="width:70%;margin-top:2mm"><thead><tr><th>Gejala</th><th style="width:22%">Bilangan</th><th style="width:22%">Peratus</th></tr></thead>
     <tbody><tr style="height:7mm"><td></td><td></td><td></td></tr><tr style="height:7mm"><td></td><td></td><td></td></tr><tr style="height:7mm"><td></td><td></td><td></td></tr><tr style="height:7mm"><td></td><td></td><td></td></tr><tr style="height:7mm"><td></td><td></td><td></td></tr></tbody></table>
   
 </div>
@@ -1380,36 +1506,43 @@ footer a{color:#FFFFFF}
   <div style="margin-top:6mm"><b>Ulasan Pegawai Penyiasat :</b></div><div class="box" style="min-height:40mm"></div>
   <div><b>Ulasan Pegawai Kesihatan Daerah :</b></div><div class="box" style="min-height:40mm"></div>
   <div><b>Ulasan Jabatan Kesihatan Negeri :</b></div><div class="box" style="min-height:40mm"></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm">
+  <div class="two" style="display:grid;grid-template-columns:1fr 1fr;gap:8mm;margin-top:4mm">
     <div><b>Pegawai Pelapor (Daerah) :</b><div class="f n" style="margin-top:2mm"><span>Nama</span><span>:</span><span></span></div><div class="f n"><span>Jawatan</span><span>:</span><span></span></div><div class="f n tall"><span>Alamat pejabat</span><span>:</span><span></span></div></div>
     <div><b>Pegawai Pelapor (Negeri) :</b><div class="f n" style="margin-top:2mm"><span>Nama</span><span>:</span><span></span></div><div class="f n"><span>Jawatan</span><span>:</span><span></span></div><div class="f n tall"><span>Alamat pejabat</span><span>:</span><span></span></div></div>
   </div>
   
 </div>
-</div></div></section>
+</div></section>
 
 </div><!-- /views -->
-</main>
 
-<footer>
+<nav class="tabbar" aria-label="Navigasi utama">
+  <a href="#top" data-tab="latar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Utama</span></a>
+  <a href="#ringkasan" data-tab="ringkasan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span>Ringkasan</span></a>
+  <a href="#klasifikasi" data-tab="klasifikasi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg><span>Klasifikasi</span></a>
+  <a href="#kuasa" data-tab="kuasa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg><span>Punca kuasa</span></a>
+  <a href="#lampiran" data-tab="lampiran"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg><span>Borang</span></a>
+</nav>
+
+<footer class="gut">
   <div class="wrap">
     <div>
       <b>Unit Penyakit Tidak Berjangkit (NCD)</b><br>
-      Bahagian Kesihatan Awam, Jabatan Kesihatan Negeri Kedah<br>
-      <span style="display:block;margin-top:10px;max-width:56ch">Hub ini menghimpunkan arahan, garis panduan dan borang rasmi untuk pengurusan situasi akut atau kritikal akibat produk merokok di Negeri Kedah. Sekiranya terdapat perbezaan, dokumen asal KKM menjadi rujukan muktamad.</span>
+      Bahagian Kesihatan Awam, Jabatan Kesihatan Negeri Kedah
+      <p style="margin-top:10px;max-width:58ch">Hub ini menghimpunkan arahan, garis panduan dan borang rasmi untuk pengurusan situasi akut atau kritikal akibat produk merokok di Negeri Kedah. Sekiranya terdapat perbezaan, dokumen asal KKM menjadi rujukan muktamad.</p>
     </div>
     <div>
       <b>Pautan pantas</b>
       <div style="display:grid;gap:4px;margin-top:8px">
-        <a href="#lampiran-2">Borang Notifikasi (Lampiran 2)</a>
-        <a href="#lampiran-4">Borang Siasatan (Lampiran 4)</a>
+        <a href="#lampiran-2">Borang Notifikasi</a>
+        <a href="#lampiran-4">Borang Siasatan</a>
         <a href="#lampiran-6">Carta Alir Pengambilan Sampel</a>
         <a href="files/GP_Notifikasi_Situasi_Akut_Kritikal_Produk_Merokok_2026.pdf" target="_blank" rel="noopener">GP Edisi 2026 (PDF)</a>
       </div>
     </div>
     <div class="fine">
-      <span>Sumber: SPKPK Bil. 25/2026 dan GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026, Bahagian Kawalan Penyakit, KKM. Hak cipta dokumen asal © KKM 2026.</span>
-      <span class="mono">Kemas kini: 26 Oktober 2026</span>
+      <span>Sumber: SPKPK Bil. 25/2026 dan GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026, Bahagian Kawalan Penyakit, KKM.</span>
+      <span class="mono">Kemas kini: 27 Oktober 2026</span>
     </div>
   </div>
 </footer>
@@ -1417,139 +1550,168 @@ footer a{color:#FFFFFF}
 <script>
 (function(){
   "use strict";
-  var L = [
-    {n:1,  src:"Lampiran 1",             title:"Ringkasan Toksidrom dan Pemeriksaan Klinikal Utama", kind:"Rujukan klinikal", pdf:"L01_Ringkasan_Toksidrom.pdf"},
-    {n:2,  src:"Lampiran 2",             title:"Borang Notifikasi Situasi Akut atau Kritikal Berkaitan Produk Merokok", kind:"Borang · 3 ms", pdf:"L02_Borang_Notifikasi.pdf", note:"Diisi oleh hospital / klinik dan dihantar ke PKD dalam 24 jam selepas diagnosis. Bahagian 6 diisi oleh PKD."},
-    {n:3,  src:"Lampiran 3",             title:"Carta Alir Pengurusan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok", kind:"Carta alir", pdf:"L03_Carta_Alir_Pengurusan_Notifikasi.pdf", note:"Klik label berwarna dalam lajur Tindakan untuk membuka borang yang digunakan pada langkah tersebut."},
-    {n:4,  src:"Lampiran 4",             title:"Borang Siasatan Situasi Akut atau Kritikal Berkaitan Produk Merokok", kind:"Borang · 3 ms", pdf:"L04_Borang_Siasatan.pdf", note:"Diisi oleh PKD dalam 48 jam selepas menerima notifikasi. Bahagian 7 ialah laporan awal; Bahagian 8 diisi oleh JKN."},
-    {n:5,  src:"Lampiran 5",             title:"Format Surat Pemakluman kepada PDRM", kind:"Surat · Word", pdf:"L05_Format_Surat_Pemakluman_PDRM.pdf", docx:"L05_Format_Surat_Pemakluman_PDRM.docx", note:"Untuk kes disyaki bahan terlarang tanpa bukti kukuh. Muat turun versi Word dan gunakan kepala surat PKD."},
-    {n:6,  src:"Lampiran 6",             title:"Carta Alir Pengambilan Sampel di bawah Seksyen 28(2) Akta 852", kind:"Carta alir", pdf:"L06a_Carta_Alir_Pengambilan_Sampel.pdf", full:"L06_Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf", note:"Klik kotak berwarna untuk membuka Notis Persampelan, Label, Permintaan Analisis dan Perakuan Juruanalisis."},
-    {n:7,  src:"Lampiran 6 · Borang A",  title:"Notis Persampelan (Notis Seksyen 28(1))", kind:"Borang", pdf:"L06b_Borang_A_Notis_Persampelan.pdf", full:"L06_Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf"},
-    {n:8,  src:"Lampiran 6 · Borang 1",  title:"Label bagi Produk Tembakau / Produk Pengganti Tembakau / Bahan Merokok", kind:"Label", pdf:"L06c_Borang_1_Label_Produk.pdf", full:"L06_Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf", note:"Satu label pejabat dan dua label sampel bagi setiap sampel. Potong mengikut garisan putus-putus."},
-    {n:9,  src:"Lampiran 6",             title:"Permintaan bagi Analisis Produk Merokok", kind:"Borang", pdf:"L06d_Permintaan_Analisis_Produk_Merokok.pdf", full:"L06_Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf"},
-    {n:10, src:"Lampiran 6",             title:"Perakuan Juruanalisis", kind:"Borang makmal", pdf:"L06e_Perakuan_Juruanalisis.pdf", full:"L06_Tatacara_Pengambilan_Sampel_UIP-AKPMDKA-04-24.pdf", note:"Diisi oleh juruanalisis makmal. Pegawai pemungut sampel memastikan perakuan ini diperoleh."},
-    {n:11, src:"Lampiran 7",             title:"Borang Laporan Akhir Situasi Akut atau Kritikal", kind:"Laporan · Word", pdf:"L07_Laporan_Akhir.pdf", docx:"L07_Laporan_Akhir_Situasi_Akut_Kritikal.docx", note:"Kes sporadik: sampai di IPKKM dalam 7 hari. Kluster: selepas bilik gerakan ditutup. Versi Word boleh diisi terus."},
-    {n:12, src:"Lampiran 9",             title:"Pelaporan Kejadian Berkaitan Kesihatan ke CPRC", kind:"Borang · 2 ms", pdf:"L09_Pelaporan_Kejadian_CPRC.pdf", note:"Dihantar bersama Laporan Pengurusan Kluster selepas pengesahan kluster."},
-    {n:13, src:"Lampiran 8 · Tambahan",  title:"Format Laporan Pengurusan Kluster", kind:"Laporan · 4 ms", pdf:"L08_Laporan_Pengurusan_Kluster.pdf", extra:true, note:"Disertakan kerana carta alir (langkah 7) memerlukan laporan ini bersama pelaporan CPRC."}
+  var L=[
+    {n:1, id:'lampiran-1', g:'Klinikal & notifikasi', src:'Lampiran 1', t:'Ringkasan Toksidrom dan Pemeriksaan Klinikal Utama', k:'Rujukan klinikal', pdf:'01_Ringkasan_Toksidrom.pdf', note:'Kehadiran toksidrom klinikal ialah kriteria C bagi kes penyakit selain EVALI (Non-EVALI).'},
+    {n:2, id:'lampiran-2', g:'Klinikal & notifikasi', src:'Lampiran 2', t:'Borang Notifikasi Situasi Akut atau Kritikal Berkaitan Produk Merokok', k:'Borang · 3 ms', pdf:'02_Borang_Notifikasi.pdf', note:'Diisi oleh hospital / klinik dan dihantar ke PKD dalam 24 jam selepas diagnosis. Bahagian 6 diisi oleh PKD.'},
+    {n:3, id:'lampiran-3', g:'Klinikal & notifikasi', src:'Lampiran 3', t:'Carta Alir Pengurusan Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok', k:'Carta alir', pdf:'03_Carta_Alir_Pengurusan_Notifikasi.pdf', note:'Klik label berwarna dalam lajur Tindakan untuk membuka borang yang digunakan pada langkah tersebut.'},
+    {n:4, id:'lampiran-4', g:'Siasatan & PDRM', src:'Lampiran 4', t:'Borang Siasatan Situasi Akut atau Kritikal Berkaitan Produk Merokok', k:'Borang · 3 ms', pdf:'04_Borang_Siasatan.pdf', note:'Diisi oleh PKD dalam 48 jam selepas menerima notifikasi. Bahagian 7 ialah laporan awal; Bahagian 8 diisi oleh JKN.'},
+    {n:5, id:'lampiran-5', g:'Siasatan & PDRM', src:'Lampiran 5', t:'Format Surat Pemakluman kepada PDRM', k:'Surat · Word', pdf:'05_Format_Surat_Pemakluman_PDRM.pdf', docx:'L05_Format_Surat_Pemakluman_PDRM.docx', note:'Untuk kes disyaki bahan terlarang tanpa bukti kukuh. Muat turun versi Word dan gunakan kepala surat PKD.'},
+    {n:6, id:'lampiran-6', g:'Persampelan produk · Akta 852 s.28(2)', src:'Lampiran 6', t:'Carta Alir Pengambilan Sampel', k:'Carta alir', pdf:'06_Carta_Alir_Pengambilan_Sampel.pdf', note:'Klik kotak berwarna untuk membuka Notis Persampelan, Label, Permintaan Analisis dan Perakuan Juruanalisis.'},
+    {n:7, id:'lampiran-7', g:'Persampelan produk · Akta 852 s.28(2)', src:'Lampiran 6 · Borang A', t:'Notis Persampelan (Notis Seksyen 28(1))', k:'Borang', pdf:'07_Borang_A_Notis_Persampelan.pdf'},
+    {n:8, id:'lampiran-8', g:'Persampelan produk · Akta 852 s.28(2)', src:'Lampiran 6 · Borang 1', t:'Label bagi Produk Tembakau / Produk Pengganti Tembakau / Bahan Merokok', k:'Label', pdf:'08_Borang_1_Label_Produk.pdf', note:'Satu label pejabat dan dua label sampel bagi setiap sampel. Potong mengikut garisan putus-putus.'},
+    {n:9, id:'lampiran-9', g:'Persampelan produk · Akta 852 s.28(2)', src:'Lampiran 6', t:'Permintaan bagi Analisis Produk Merokok', k:'Borang', pdf:'09_Permintaan_Analisis_Produk_Merokok.pdf'},
+    {n:10,id:'lampiran-10',g:'Persampelan produk · Akta 852 s.28(2)', src:'Lampiran 6', t:'Perakuan Juruanalisis', k:'Borang makmal', pdf:'10_Perakuan_Juruanalisis.pdf', note:'Diisi oleh juruanalisis makmal. Pegawai pemungut sampel memastikan perakuan ini diperoleh.'},
+    {n:11,id:'lampiran-11',g:'Pelaporan', src:'Lampiran 7', t:'Borang Laporan Akhir Situasi Akut atau Kritikal', k:'Laporan · Word', pdf:'11_Laporan_Akhir.pdf', docx:'L07_Laporan_Akhir_Situasi_Akut_Kritikal.docx', note:'Kes sporadik: sampai di IPKKM dalam 7 hari. Kluster: selepas bilik gerakan ditutup. Versi Word boleh diisi terus.'},
+    {n:12,id:'lampiran-12',g:'Pelaporan', src:'Lampiran 9', t:'Pelaporan Kejadian Berkaitan Kesihatan ke CPRC', k:'Borang · 2 ms', pdf:'12_Pelaporan_Kejadian_CPRC.pdf', note:'Dihantar bersama Laporan Pengurusan Kluster selepas pengesahan kluster.'},
+    {n:13,id:'lampiran-13',g:'Pelaporan', src:'Lampiran 8', t:'Format Laporan Pengurusan Kluster', k:'Laporan · 4 ms', pdf:'13_Laporan_Pengurusan_Kluster.pdf', note:'Disertakan kerana carta alir notifikasi (langkah 7) memerlukan laporan ini bersama pelaporan CPRC.'}
   ];
-  var ICON = {
+  var ICON={
     back:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>',
     print:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V3h12v6"/><rect x="6" y="14" width="12" height="7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/></svg>',
     pdf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 21h16"/></svg>',
+    a4:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="1"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>',
     doc:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/><path d="M8 13l1.5 5 2.5-5 2.5 5 1.5-5"/></svg>'
   };
-  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]})}
 
-  /* index cards */
-  var list = document.getElementById("lampList");
-  list.innerHTML = L.map(function(x){
-    var chips = '<span class="tag">'+esc(x.kind)+'</span>' + (x.docx?'<span class="tag teal">.docx</span>':'') + '<span class="tag">PDF asal</span>';
-    return '<a class="lamp'+(x.extra?' extra':'')+'" href="#lampiran-'+x.n+'"><span class="n">'+x.n+'</span><span style="min-width:0"><span class="src">'+esc(x.src)+'</span><span class="ttl" style="display:block">'+esc(x.title)+'</span><span class="fmt">'+chips+'</span></span></a>';
-  }).join("");
+  /* ---------- lampiran index ---------- */
+  var groups=[];L.forEach(function(x){if(groups.indexOf(x.g)<0)groups.push(x.g)});
+  var h='';
+  groups.forEach(function(g){
+    h+='<div class="lgroup"><h3>'+esc(g)+'</h3><div class="lgrid">';
+    L.filter(function(x){return x.g===g}).forEach(function(x){
+      h+='<a class="lcard" href="#'+x.id+'"><span class="no">'+x.n+'</span><span><b>'+esc(x.t)+'</b><small>'+esc(x.src)+' · '+esc(x.k)+(x.docx?' · .docx':'')+' · PDF</small></span></a>';
+    });
+    h+='</div></div>';
+  });
+  document.getElementById('lampIndex').innerHTML=h;
 
-  /* viewer bars */
+  /* ---------- viewer bars ---------- */
   L.forEach(function(x,i){
-    var sec = document.getElementById("lampiran-"+x.n); if(!sec) return;
-    var prev = L[i-1], next = L[i+1];
-    var acts = '<button class="btn pri" type="button" data-print>'+ICON.print+'Cetak</button>'+
-      '<a class="btn" href="files/'+x.pdf+'" download target="_blank" rel="noopener">'+ICON.pdf+'PDF asal</a>'+
-      (x.docx?'<a class="btn amber" href="files/'+x.docx+'" download>'+ICON.doc+'Word (.docx)</a>':'')+
-      (x.full?'<a class="btn" href="files/'+x.full+'" target="_blank" rel="noopener">Tatacara penuh</a>':'');
-    var bar = document.createElement("div"); bar.className="viewer-bar";
-    bar.innerHTML = '<div class="wrap"><a class="btn" href="#lampiran" aria-label="Kembali ke senarai lampiran">'+ICON.back+'Semua</a>'+
-      '<div class="vt"><div class="src">'+esc(x.src)+'</div><h2>'+esc(x.title)+'</h2></div><div class="acts">'+acts+'</div></div>';
-    sec.insertBefore(bar, sec.firstChild);
-    var w = sec.children[1];
-    if(x.note){ var p=document.createElement("p"); p.className="vnote callout"; p.textContent=x.note; w.insertBefore(p,w.firstChild); }
-    var pg=document.createElement("div"); pg.className="pager";
-    pg.innerHTML=(prev?'<a class="btn" href="#lampiran-'+prev.n+'">← '+esc(prev.src)+'</a>':'<span></span>')+(next?'<a class="btn" href="#lampiran-'+next.n+'">'+esc(next.src)+' →</a>':'<span></span>');
-    w.appendChild(pg);
+    var sec=document.getElementById(x.id);if(!sec)return;
+    var prev=L[i-1],next=L[i+1];
+    var acts='<button class="btn amb" type="button" data-print>'+ICON.print+'Cetak</button>'+
+      '<a class="btn" href="files/'+x.pdf+'" download target="_blank" rel="noopener">'+ICON.pdf+'PDF</a>'+
+      (x.docx?'<a class="btn" href="files/'+x.docx+'" download>'+ICON.doc+'Word</a>':'')+
+      '<button class="btn a4t" type="button" data-a4 aria-pressed="false">'+ICON.a4+'<span>Paparan A4</span></button>';
+    var bar=document.createElement('div');bar.className='vbar gut';
+    bar.innerHTML='<div class="wrap"><a class="btn" href="#lampiran" aria-label="Kembali ke senarai borang">'+ICON.back+'Semua</a><div class="vt"><small>'+esc(x.src)+'</small><h2>'+esc(x.t)+'</h2></div><div class="acts">'+acts+'</div></div>';
+    sec.insertBefore(bar,sec.firstChild);
+    var shs=sec.querySelector('.sheets');if(shs)shs.classList.add('gut');
+    if(x.note){var w=document.createElement('div');w.className='gut';var p=document.createElement('p');p.className='vnote';p.textContent=x.note;w.appendChild(p);sec.insertBefore(w,bar.nextSibling)}
+    var pg=document.createElement('div');pg.className='pager gut';
+    pg.innerHTML=(prev?'<a class="btn" href="#'+prev.id+'">← '+esc(prev.src)+'</a>':'<span></span>')+(next?'<a class="btn" href="#'+next.id+'">'+esc(next.src)+' →</a>':'<span></span>');
+    sec.appendChild(pg);
   });
-  document.addEventListener("click",function(e){
-    var b=e.target.closest("[data-print]"); if(b){ window.print(); }
+  document.addEventListener('click',function(e){if(e.target.closest('[data-print]')){try{window.print()}catch(err){}}});
+
+  /* ---------- accordions (phone) ---------- */
+  var CHEV='<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6"/></svg>';
+  document.querySelectorAll('main .sec').forEach(function(sec){
+    [].slice.call(sec.children).filter(function(c){return c.matches('h3.sub')}).forEach(function(hd,i){
+      var body=document.createElement('div');body.className='acc-b';
+      var n=hd.nextElementSibling;
+      while(n&&!n.matches('h3.sub')){var nx=n.nextElementSibling;body.appendChild(n);n=nx}
+      hd.parentNode.insertBefore(body,hd.nextSibling);
+      hd.classList.add('acc-h');hd.setAttribute('role','button');hd.tabIndex=0;
+      hd.setAttribute('aria-expanded',i===0?'true':'false');
+      hd.insertAdjacentHTML('beforeend',CHEV);
+    });
+  });
+  function tog(hd){hd.setAttribute('aria-expanded',hd.getAttribute('aria-expanded')==='true'?'false':'true')}
+  document.addEventListener('click',function(e){var hd=e.target.closest('.acc-h');if(hd&&matchMedia('(max-width:760px)').matches)tog(hd)});
+  document.addEventListener('keydown',function(e){var hd=e.target.closest&&e.target.closest('.acc-h');if(hd&&(e.key==='Enter'||e.key===' ')){e.preventDefault();tog(hd)}});
+  function openTo(el){var b=el.closest&&el.closest('.acc-b');if(b&&b.previousElementSibling)b.previousElementSibling.setAttribute('aria-expanded','true')}
+
+  /* ---------- stacked tables (phone) ---------- */
+  document.querySelectorAll('table.t').forEach(function(t){
+    var hd=[].slice.call(t.querySelectorAll('thead th')).map(function(th){return th.textContent.trim()});
+    if(!hd.length)return;
+    t.classList.add('stk');if(t.parentElement.classList.contains('tw'))t.parentElement.classList.add('stk');
+    t.querySelectorAll('tbody tr').forEach(function(tr){[].slice.call(tr.children).forEach(function(td,c){td.setAttribute('data-label',hd[c]||'')})});
   });
 
-  /* routing */
-  var views = document.querySelectorAll(".lview");
+  /* ---------- routing ---------- */
   function route(){
-    var h = (location.hash||"").slice(1);
-    var m = /^lampiran-(\d+)$/.exec(h);
-    views.forEach(function(v){v.classList.remove("active");});
-    if(m && document.getElementById(h)){
-      document.getElementById(h).classList.add("active");
-      document.body.classList.add("viewing");
-      var x=L.filter(function(o){return o.n==m[1];})[0];
-      document.title = (x? x.src+" – ":"")+"Hub Sehenti EVALI / Non-EVALI";
-      window.scrollTo(0, document.querySelector(".nav").offsetTop);
-      setNav("lampiran");
+    var hs=(location.hash||'').slice(1),x=null;
+    for(var k=0;k<L.length;k++)if(L[k].id===hs)x=L[k];
+    document.querySelectorAll('.lview').forEach(function(s){s.classList.remove('on')});
+    if(x){
+      document.getElementById(x.id).classList.add('on');
+      document.body.classList.add('lv');
+      setTab('lampiran');
+      document.title=x.src+' – Hub Sehenti EVALI / Non-EVALI';
+      try{window.scrollTo({top:0,left:0,behavior:'instant'})}catch(e){window.scrollTo(0,0)}
     } else {
-      var was = document.body.classList.contains("viewing");
-      document.body.classList.remove("viewing");
-      document.title = "Hub Sehenti EVALI / Non-EVALI";
-      if(h){ var t=document.getElementById(h); if(t && was){ t.scrollIntoView(); } }
+      document.body.classList.remove('lv');
+      document.title='Hub Sehenti EVALI / Non-EVALI';
+      if(hs){var t=document.getElementById(hs);if(t){openTo(t);t.scrollIntoView()}}
     }
   }
-  window.addEventListener("hashchange", route);
+  window.addEventListener('hashchange',route);
 
-  /* nav highlight */
-  var navLinks = document.querySelectorAll(".nav a");
-  function setNav(id){ navLinks.forEach(function(a){a.classList.toggle("on", a.dataset.nav===id);}); }
-  if("IntersectionObserver" in window){
+  /* ---------- tab bar + rail highlight ---------- */
+  var tabs=[].slice.call(document.querySelectorAll('.tabbar a'));
+  function setTab(id){tabs.forEach(function(a){a.classList.toggle('on',a.getAttribute('data-tab')===id)})}
+  var links=[].slice.call(document.querySelectorAll('#railList a'));
+  if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
-      if(document.body.classList.contains("viewing")) return;
-      es.forEach(function(e){ if(e.isIntersecting) setNav(e.target.id); });
-    },{rootMargin:"-45% 0px -50% 0px"});
-    ["latar","ringkasan","klasifikasi","kuasa","lampiran"].forEach(function(id){var el=document.getElementById(id); if(el) io.observe(el);});
+      if(document.body.classList.contains('lv'))return;
+      es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;setTab(id);links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})}});
+    },{rootMargin:'-35% 0px -60% 0px'});
+    document.querySelectorAll('main .sec').forEach(function(s){io.observe(s)});
   }
+  setTab('latar');
+  window.addEventListener('scroll',function(){if(!document.body.classList.contains('lv')&&window.scrollY<200)setTab('latar')},{passive:true});
 
-  /* classifier (Rajah 4) */
-  var Q = {
-    q1:{t:"Pesakit bergejala dan menggunakan apa-apa produk merokok dalam tempoh 90 hari sebelum gejala bermula?", y:"q2", n:"X"},
-    q2:{t:"Ada diagnosis atau punca lain yang jelas bagi gejala tersebut?", y:"X", n:"q3"},
-    q3:{t:"Ada perubahan radiologi pada X-ray atau CT dada (infiltrat pulmonari / ground-glass opacities)?", y:"q4", n:"q5"},
-    q4:{t:"Ada juga jangkitan yang dikenal pasti (PCR atau kultur)?", y:"P", n:"C"},
-    q5:{t:"Tiada bukti jangkitan, dan/atau terdapat toksidrom klinikal?", y:"N", n:"X"}
+  /* ---------- A4 toggle (phone) ---------- */
+  function fitA4(){var w=Math.min(window.innerWidth,document.documentElement.clientWidth)-24;document.documentElement.style.setProperty('--z',Math.max(.3,Math.min(1,w/794)).toFixed(3))}
+  fitA4();window.addEventListener('resize',fitA4);
+  try{if(localStorage.getItem('evaliA4')==='1')document.body.classList.add('a4')}catch(e){}
+  function syncA4(){var on=document.body.classList.contains('a4');document.querySelectorAll('[data-a4]').forEach(function(b){b.setAttribute('aria-pressed',on);b.querySelector('span').textContent=on?'Mudah baca':'Paparan A4'})}
+  document.addEventListener('click',function(e){if(!e.target.closest('[data-a4]'))return;document.body.classList.toggle('a4');try{localStorage.setItem('evaliA4',document.body.classList.contains('a4')?'1':'0')}catch(err){}syncA4()});
+  syncA4();
+
+  /* ---------- classifier (Rajah 4) ---------- */
+  var Q={
+    q1:{t:'Pesakit bergejala dan menggunakan apa-apa produk merokok dalam tempoh 90 hari sebelum gejala bermula?',y:'q2',n:'X'},
+    q2:{t:'Ada diagnosis atau punca lain yang jelas bagi gejala tersebut?',y:'X',n:'q3'},
+    q3:{t:'Ada perubahan radiologi pada X-ray atau CT dada (infiltrat pulmonari / ground-glass opacities)?',y:'q4',n:'q5'},
+    q4:{t:'Ada juga jangkitan yang dikenal pasti (PCR atau kultur)?',y:'P',n:'C'},
+    q5:{t:'Tiada bukti jangkitan, dan/atau terdapat toksidrom klinikal?',y:'N',n:'X'}
   };
-  var R = {
-    S:{c:"s",tag:"Kes disyaki",h:"Kes Disyaki (Suspected Case)",b:"Penuhi kriteria kes disyaki. <strong>Notifikasi kepada PKD dalam 24 jam</strong> menggunakan Borang Notifikasi tanpa menunggu diagnosis akhir. Teruskan penilaian untuk klasifikasi.",l:[["lampiran-2","Buka Borang Notifikasi"]]},
-    P:{c:"p",tag:"EVALI",h:"Probable EVALI",b:"Kes disyaki dengan perubahan radiologi dan jangkitan yang dikesan, tetapi pasukan klinikal percaya jangkitan bukan punca utama. Pastikan pengguna <strong>vape</strong> dan tiada diagnosis alternatif munasabah.",l:[["lampiran-2","Borang Notifikasi"],["lampiran-4","Borang Siasatan"]]},
-    C:{c:"c",tag:"EVALI",h:"Confirmed EVALI",b:"Kes disyaki dengan perubahan radiologi dan tiada jangkitan pulmonari (semua ujian jangkitan respiratori negatif). Pastikan pengguna <strong>vape</strong> dan tiada diagnosis alternatif munasabah.",l:[["lampiran-2","Borang Notifikasi"],["lampiran-4","Borang Siasatan"]]},
-    N:{c:"n",tag:"Non-EVALI",h:"Selain EVALI (Non-EVALI)",b:"Pilih subkategori dalam borang:<ul class='tidy' style='margin-top:8px'><li><i>E-cigarette or Vaping Use without Lung Injury</i></li><li><i>E-cigarette or Vaping with Substance Use</i></li><li>Berkaitan lain-lain produk merokok (tembakau / pengganti tembakau)</li></ul>",l:[["lampiran-1","Semak toksidrom"],["lampiran-2","Borang Notifikasi"]]},
-    X:{c:"x",tag:"Tidak memenuhi definisi",h:"Bukan situasi akut atau kritikal akibat produk merokok",b:"Kes tidak memenuhi definisi kes dalam GP. Urus mengikut diagnosis klinikal. Nilai semula jika maklumat baharu diperoleh.",l:[]}
+  var R={
+    S:{c:'s',tag:'Kes disyaki',h:'Kes Disyaki (Suspected Case)',b:'Memenuhi kriteria kes disyaki. <strong>Notifikasi kepada PKD dalam 24 jam</strong> menggunakan Borang Notifikasi tanpa menunggu diagnosis akhir. Teruskan penilaian untuk klasifikasi.',l:[['lampiran-2','Borang Notifikasi']]},
+    P:{c:'p',tag:'EVALI',h:'Probable EVALI',b:'Kes disyaki dengan perubahan radiologi dan jangkitan yang dikesan, tetapi pasukan klinikal percaya jangkitan bukan punca utama. Pastikan pengguna <strong>vape</strong> dan tiada diagnosis alternatif munasabah.',l:[['lampiran-2','Borang Notifikasi'],['lampiran-4','Borang Siasatan']]},
+    C:{c:'c',tag:'EVALI',h:'Confirmed EVALI',b:'Kes disyaki dengan perubahan radiologi dan tiada jangkitan pulmonari (semua ujian jangkitan respiratori negatif). Pastikan pengguna <strong>vape</strong> dan tiada diagnosis alternatif munasabah.',l:[['lampiran-2','Borang Notifikasi'],['lampiran-4','Borang Siasatan']]},
+    N:{c:'n',tag:'Non-EVALI',h:'Selain EVALI (Non-EVALI)',b:'Pilih subkategori dalam borang:<ul class="tidy" style="margin-top:8px"><li><i>E-cigarette or Vaping Use without Lung Injury</i></li><li><i>E-cigarette or Vaping with Substance Use</i></li><li>Berkaitan lain-lain produk merokok (tembakau / pengganti tembakau)</li></ul>',l:[['lampiran-1','Semak toksidrom'],['lampiran-2','Borang Notifikasi']]},
+    X:{c:'x',tag:'Tidak memenuhi definisi',h:'Bukan situasi akut atau kritikal akibat produk merokok',b:'Kes tidak memenuhi definisi kes dalam GP. Urus mengikut diagnosis klinikal. Nilai semula jika maklumat baharu diperoleh.',l:[]}
   };
-  var path=[];
-  var stepsEl=document.getElementById("clfSteps"), resEl=document.getElementById("clfResult");
+  var path=[],stepsEl=document.getElementById('clfSteps'),resEl=document.getElementById('clfResult');
   function renderClf(){
-    var cur="q1", html="", i;
-    for(i=0;i<path.length;i++){
-      var q=Q[cur], a=path[i];
-      html+='<li class="done"><div class="q">'+q.t+'</div><div class="ans">Jawapan: '+(a?"YA":"TIDAK")+'</div></li>';
-      cur = a? q.y : q.n;
-    }
-    var suspected = path.length>=2 && path[0]===true && path[1]===false;
+    var cur='q1',out='',i;
+    for(i=0;i<path.length;i++){var q=Q[cur],a=path[i];out+='<li class="done"><div class="q">'+q.t+'</div><div class="ans">Jawapan: '+(a?'YA':'TIDAK')+'</div></li>';cur=a?q.y:q.n}
+    var susp=path.length>=2&&path[0]===true&&path[1]===false;
     if(Q[cur]){
-      html+='<li><div class="q">'+Q[cur].t+'</div><div class="btns"><button class="btn pri" type="button" data-a="1">Ya</button><button class="btn" type="button" data-a="0">Tidak</button>'+(path.length?'<button class="btn" type="button" data-undo>Undur</button>':'')+'</div></li>';
-      stepsEl.innerHTML=html;
-      showRes(suspected? R.S : null, false);
+      out+='<li><div class="q">'+Q[cur].t+'</div><div class="btns"><button class="btn pri" type="button" data-ans="1">Ya</button><button class="btn" type="button" data-ans="0">Tidak</button>'+(path.length?'<button class="btn" type="button" data-undo>Undur</button>':'')+'</div></li>';
+      stepsEl.innerHTML=out;showRes(susp?R.S:null,false,false);
     } else {
-      html+='<li><div class="btns" style="margin-top:0"><button class="btn" type="button" data-undo>Undur</button><button class="btn" type="button" data-reset>Mula semula</button></div></li>';
-      stepsEl.innerHTML=html;
-      showRes(R[cur], true, suspected && cur!=="X");
+      out+='<li><div class="btns" style="margin-top:0"><button class="btn" type="button" data-undo>Undur</button><button class="btn" type="button" data-reset>Mula semula</button></div></li>';
+      stepsEl.innerHTML=out;showRes(R[cur],true,susp&&cur!=='X');
     }
   }
-  function showRes(r, final, notify){
-    if(!r){ resEl.className="result x"; resEl.innerHTML='<span class="tag">Keputusan</span><h3>Belum lengkap</h3><p class="muted">Jawab soalan di sebelah. Keputusan dan tindakan seterusnya akan dipaparkan di sini.</p>'; return; }
-    var links=r.l.map(function(k){return '<a class="btn" href="#'+k[0]+'">'+k[1]+'</a>';}).join("");
-    resEl.className="result "+r.c;
-    resEl.innerHTML='<span class="tag'+(r.c==="p"||r.c==="c"?" red":r.c==="n"?" teal":"")+'">'+r.tag+(final?"":" · interim")+'</span><h3>'+r.h+'</h3><div>'+r.b+'</div>'+
-      (notify?'<div class="callout" style="margin-top:14px"><strong>Notifikasi:</strong> hantar Borang Notifikasi ke PKD dalam 24 jam selepas diagnosis jika belum dibuat.</div>':'')+
-      (links?'<div class="btns">'+links+'</div>':'');
+  function showRes(r,fin,notify){
+    if(!r){resEl.className='result';resEl.innerHTML='<span class="tag">Keputusan</span><h3>Belum lengkap</h3><p class="muted">Jawab soalan. Keputusan dan tindakan seterusnya akan dipaparkan di sini.</p>';return}
+    var links=r.l.map(function(k){return '<a class="btn" href="#'+k[0]+'">'+k[1]+'</a>'}).join('');
+    var tc=r.c==='p'||r.c==='c'?' red':(r.c==='n'?' teal':(r.c==='s'?' amb':''));
+    resEl.className='result '+r.c;
+    resEl.innerHTML='<span class="tag'+tc+'">'+r.tag+(fin?'':' · interim')+'</span><h3>'+r.h+'</h3><div>'+r.b+'</div>'+(notify?'<div class="callout" style="margin-top:14px"><strong>Notifikasi:</strong> hantar Borang Notifikasi ke PKD dalam 24 jam selepas diagnosis jika belum dibuat.</div>':'')+(links?'<div class="btns">'+links+'</div>':'');
   }
-  stepsEl.addEventListener("click",function(e){
-    var t=e.target.closest("button"); if(!t) return;
-    if(t.hasAttribute("data-a")) path.push(t.getAttribute("data-a")==="1");
-    else if(t.hasAttribute("data-undo")) path.pop();
-    else if(t.hasAttribute("data-reset")) path=[];
+  stepsEl.addEventListener('click',function(e){
+    var t=e.target.closest('button');if(!t)return;
+    if(t.hasAttribute('data-ans'))path.push(t.getAttribute('data-ans')==='1');
+    else if(t.hasAttribute('data-undo'))path.pop();
+    else if(t.hasAttribute('data-reset'))path=[];
     renderClf();
   });
   renderClf();
