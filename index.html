@@ -204,6 +204,12 @@ dl.meta dd{margin:0;font:500 .84rem var(--f-mono);overflow-wrap:anywhere;min-wid
 .lcard b{display:block;font-size:.95rem;line-height:1.3}
 .lcard small{color:var(--muted);font-size:.8rem}
 
+/* course materials */
+.course{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:18px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.course-ic{width:52px;height:52px;border-radius:10px;background:var(--navy);color:var(--amber);display:grid;place-items:center}
+.course-ic svg{width:28px;height:28px}
+.course-t h3{font-size:1.08rem;margin-bottom:4px}
+@media (max-width:640px){.course{grid-template-columns:auto minmax(0,1fr)}.course .btn{grid-column:1/-1;justify-content:center;min-height:46px}}
 /* talian (phone) */
 .talian-m{display:none}
 
@@ -519,6 +525,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
       <li><a href="#klasifikasi">Klasifikasi kes</a></li>
       <li><a href="#kuasa">Punca kuasa</a></li>
       <li><a href="#lampiran">Lampiran &amp; borang</a></li>
+      <li><a href="#kursus">Bahan kursus</a></li>
     </ol>
     <div class="hot">
       <b>Pertanyaan teknikal</b>
@@ -814,6 +821,19 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
   <p class="muted" style="max-width:70ch">Setiap borang dan carta alir dibina semula dalam format A4. Buka untuk paparan di skrin, cetak terus, atau muat turun PDF. Templat Word yang boleh disunting disediakan untuk surat dan laporan.</p>
   <div id="lampIndex"></div>
 </section>
+
+<!-- ================= 06 BAHAN KURSUS ================= -->
+<section class="sec" id="kursus">
+  <h2>Bahan kursus <small>Slaid pembentang</small></h2>
+  <div class="course">
+    <div class="course-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M12 16v4M8 20h8M7 9l3 2-3 2M12 13h5"/></svg></div>
+    <div class="course-t">
+      <h3>Kursus Pengurusan Situasi Akut dan Kritikal Berkaitan Produk Merokok</h3>
+      <p class="muted">Koleksi slaid yang dibentangkan sepanjang kursus. Dibuka dalam Google Drive.</p>
+    </div>
+    <a class="btn amb" href="https://drive.google.com/drive/folders/164j8bAzoZ6PETehdxCjJHz24MRsZJxUi?usp=drive_link" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>Buka koleksi slaid</a>
+  </div>
+</section>
   </main>
 </div>
 </div>
@@ -836,7 +856,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
     </tbody>
   </table>
   <p style="margin-top:6mm;font-size:10pt;text-align:justify"><b>Toksidrom</b> (gabungan perkataan <i>toksik</i> dan <i>sindrom</i>) ialah gabungan gejala dan tanda fizikal yang menunjukkan pesakit telah terdedah atau mengalami keracunan akibat bahan kimia, ubat-ubatan atau bahan beracun tertentu. Kehadiran toksidrom klinikal ialah kriteria C bagi kes penyakit selain EVALI (Non-EVALI).</p>
-  <div class="src-foot">Sumber: Lampiran 1, GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026, BKP KKM.</div>
 </div>
 </div></section>
 
@@ -1005,7 +1024,6 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
       <tr class="last"><td class="who"></td><td class="proc"><span class="spine bot"></span><span class="node end"></span></td><td class="ctr">Tamat</td></tr>
     </tbody>
   </table>
-  <div class="src-foot" style="padding-top:3mm">Sumber: Lampiran 3, GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026. Pautan berwarna membuka borang berkaitan dalam hub ini.</div>
 </div>
 </div></section>
 
@@ -1538,11 +1556,12 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
         <a href="#lampiran-4">Borang Siasatan</a>
         <a href="#lampiran-6">Carta Alir Pengambilan Sampel</a>
         <a href="files/GP_Notifikasi_Situasi_Akut_Kritikal_Produk_Merokok_2026.pdf" target="_blank" rel="noopener">GP Edisi 2026 (PDF)</a>
+        <a href="https://drive.google.com/drive/folders/164j8bAzoZ6PETehdxCjJHz24MRsZJxUi?usp=drive_link" target="_blank" rel="noopener">Slaid kursus</a>
       </div>
     </div>
     <div class="fine">
       <span>Sumber: SPKPK Bil. 25/2026 dan GP Notifikasi Situasi Akut atau Kritikal Akibat Produk Merokok Edisi 2026, Bahagian Kawalan Penyakit, KKM.</span>
-      <span class="mono">Kemas kini: 27 Oktober 2026</span>
+      <span class="mono">Kemas kini: 28 Oktober 2026</span>
     </div>
   </div>
 </footer>
@@ -1657,7 +1676,7 @@ footer .fine{grid-column:1/-1;border-top:1px solid var(--navy-line);padding-top:
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){
       if(document.body.classList.contains('lv'))return;
-      es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;setTab(id);links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})}});
+      es.forEach(function(e){if(e.isIntersecting){var id=e.target.id;setTab(id==='kursus'?'lampiran':id);links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+id)})}});
     },{rootMargin:'-35% 0px -60% 0px'});
     document.querySelectorAll('main .sec').forEach(function(s){io.observe(s)});
   }
